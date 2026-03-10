@@ -15,6 +15,7 @@ import Wrapper from "@/layouts/wrapper";
 // animation
 import { IdProps } from "@/types/custom-d-t";
 import { charAnimation } from "@/utils/title-animation";
+import Header from "@/components/layout/header/Header";
 
 const BlogDetailsMain = ({ id }: IdProps) => {
   useScrollSmooth();
@@ -29,7 +30,7 @@ const BlogDetailsMain = ({ id }: IdProps) => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">

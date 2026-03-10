@@ -11,44 +11,44 @@ import { ModuleTitle } from "../common/ModuleTitle";
 
 const featuredServices = [
   {
-    number: ".03",
-    title: "UI Design",
+    number: ".01",
+    title: "Social Media Marketing",
     description:
-      "The whole community is interested in growing the FOX prize. The company is planning.",
-    slug: "ui-ux-design",
-    image: "/assets/img/service/01.jpeg",
+      "Stop shouting into the void. We help you build a community that actually listens, engages, and stays for the long haul.",
+    slug: "#",
+    image: "/assets/img/service/social-media.webp",
+  },
+  {
+    number: ".02",
+    title: "Branding & Identity",
+    description:
+      "A brand is more than a logo—it’s a feeling. We find your unique voice and turn it into a visual story that people won't forget.",
+    slug: "#",
+    image: "/assets/img/service/branding.webp",
+  },
+  {
+    number: ".03",
+    title: "Web Design & Dev.",
+    description:
+      "Your website is your hardest-working employee. We build fast, beautiful digital spaces that welcome guests and close the deal.",
+    slug: "#",
+    image: "/assets/img/service/website.webp",
   },
   {
     number: ".04",
-    title: "App Design",
+    title: "Video Production",
     description:
-      "The whole community is interested in growing the FOX prize. The company is planning.",
-    slug: "mobile-app-design",
-    image: "/assets/img/service/01.jpeg",
+      "Capture attention in a world that’s always moving. We tell stories through video that spark emotion and drive real action.",
+    slug: "#",
+    image: "/assets/img/service/video.webp",
   },
   {
-    number: ".02",
-    title: "Marketing strategy",
+    number: ".05",
+    title: "Print & Graphic",
     description:
-      "The whole community is interested in growing the FOX prize. The company is planning.",
-    slug: "marketing-strategy",
-    image: "/assets/img/service/s1.jpeg",
-  },
-  {
-    number: ".02",
-    title: "Marketing strategy",
-    description:
-      "The whole community is interested in growing the FOX prize. The company is planning.",
-    slug: "marketing-strategy",
-    image: "/assets/img/service/web.webp",
-  },
-  {
-    number: ".02",
-    title: "Marketing strategy",
-    description:
-      "The whole community is interested in growing the FOX prize. The company is planning.",
-    slug: "marketing-strategy",
-    image: "/assets/img/service/dm-srv02.png",
+      "There’s still magic in the physical. We create tangible brand experiences—from cards to banners—that people want to hold onto.",
+    slug: "#",
+    image: "/assets/img/service/printing.webp",
   },
 ];
 
@@ -57,17 +57,26 @@ export default function Services() {
     <section className="nt-space">
       <div className="nt-container">
         <ModuleTitle
-          suppertitle="What we do"
-          title="Our Services"
-          subtitle="We help brands stand out with design and strategy that converts."
+          suppertitle="Our Expertise"
+          title="Creative solutions for bold brands"
+          subtitle="We don't just make things look pretty; we build systems that grow your business and connect with your people."
           variant="v2"
           colorVariant="light"
         />
       </div>
 
-      {/* Slider – autoplay only; sm: 1, md: 2, lg: 4 slides */}
-      <div className="nt-bg-[url('/assets/img/service/srv-bg.jpg')] nt-bg-cover nt-bg-center">
+      {/* Slider – bg image + black/20 overlay */}
+      <div className="nt-relative">
+        <div
+          className="nt-absolute nt-inset-0 nt-bg-[url('/assets/img/service/srv-bg.jpg')] nt-bg-cover nt-bg-center"
+          aria-hidden
+        />
+        <div
+          className="nt-absolute nt-inset-0 nt-bg-black/50 nt-pointer-events-none"
+          aria-hidden
+        />
         <Swiper
+          className="nt-relative nt-z-10 nt-h-screen"
           modules={[Autoplay]}
           autoplay={{
             delay: 5000,
@@ -82,7 +91,6 @@ export default function Services() {
             768: { slidesPerView: 2 },
             1024: { slidesPerView: 3 },
           }}
-          className="nt-h-screen"
         >
           {featuredServices.map((service) => (
             <SwiperSlide key={service.slug}>
@@ -100,10 +108,10 @@ export default function Services() {
 
                 {/* Text block – top-left */}
                 <div className="nt-relative nt-z-10 nt-w-full nt-max-w-2xl nt-mx-auto">
-                  <span className="nt-block nt-text-h3 nt-text-title/60">
+                  <span className="nt-block nt-text-h3 nt-text-title/50">
                     {service.number}
                   </span>
-                  <h2 className="nt-text-white">{service.title}</h2>
+                  <h2 className="nt-text-theme nt-mt-5">{service.title}</h2>
                   <p className="nt-text-white/80 nt-mt-4">
                     {service.description}
                   </p>
@@ -116,7 +124,7 @@ export default function Services() {
                     alt={service.title}
                     width={340}
                     height={340}
-                    className="nt-grayscale nt-transition-all nt-duration-300 group-hover:nt-grayscale-0 group-hover:nt-scale-[1.03] nt-w-full nt-h-auto"
+                    className=" nt-transition-all nt-duration-300  group-hover:nt-scale-[1.03] nt-w-full nt-h-auto"
                   />
                 </div>
 

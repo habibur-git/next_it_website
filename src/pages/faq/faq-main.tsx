@@ -13,6 +13,7 @@ import Wrapper from "@/layouts/wrapper";
 // animation
 import FaqArea from "@/components/faq/faq-area";
 import { charAnimation, titleAnimation } from "@/utils/title-animation";
+import Header from "@/components/layout/header/Header";
 
 const FaqMain = () => {
   useScrollSmooth();
@@ -28,7 +29,7 @@ const FaqMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">

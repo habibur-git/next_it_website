@@ -1,19 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import faq_banner from "@/assets/img/inner-faq/faq/banner-faq.jpg";
 import Image from "next/image";
+import { useState } from "react";
 import { Search } from "../svg";
-import faq_banner from '@/assets/img/inner-faq/faq/banner-faq.jpg';
 import FaqItem from "./faq-item";
 
-// type 
+// type
 type IFaq = {
   id: number;
   question: string;
   answer: string;
-}
+};
 // faq data
-export const faq_data:IFaq[] = [
+export const faq_data: IFaq[] = [
   {
     id: 1,
     question: "What we do?",
@@ -68,7 +68,9 @@ export default function FaqArea() {
                       key={item.id}
                       item={item}
                       isOpen={openId === item.id}
-                      onToggle={() => setOpenId((prev) => (prev === item.id ? null : item.id))}
+                      onToggle={() =>
+                        setOpenId((prev) => (prev === item.id ? null : item.id))
+                      }
                     />
                   ))}
                 </div>
@@ -89,7 +91,7 @@ export default function FaqArea() {
                   className="w-100"
                   src={faq_banner}
                   alt="faq-banner"
-                  style={{height:'auto'}}
+                  style={{ height: "auto" }}
                 />
               </div>
               <div className="fq-faq-sidebar-input p-relative">

@@ -81,7 +81,7 @@ export default function PortfolioGrid() {
   }, [initIsotop]);
 
   return (
-    <div className="nt-py-24 nt-pb-[130px]">
+    <div className="nt-py-24 nt-pb-[60px]">
       <div className="nt-container">
         <div className="nt-flex nt-justify-between nt-items-center nt-mb-16">
           <h2 className="nt-text-h2 nt-text-white nt-mb-0">Our Projects</h2>

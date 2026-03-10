@@ -15,9 +15,9 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 import BigText from "@/components/big-text";
 import PortfolioGridColTwoArea from "@/components/portfolio/PortfolioGrid";
 import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
+import Header from "@/components/layout/header/Header";
 import { hoverBtn } from "@/utils/hover-btn";
 import {
   charAnimation,
@@ -65,7 +65,7 @@ const Page = () => {
       {/* magic cursor end */}
 
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">

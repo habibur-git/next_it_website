@@ -11,7 +11,7 @@ import FooterTwo from "@/layouts/footers/footer-one";
 import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
-import FaqAreaTwo from "@/components/faq/faq-area-2";
+import Faq from "@/components/faq/Faq";
 import { charAnimation, titleAnimation } from "@/utils/title-animation";
 
 const ServiceDetailsMain = () => {
@@ -37,7 +37,7 @@ const ServiceDetailsMain = () => {
             {/* service details area */}
             <ServiceDetailsArea />
             {/* service details area */}
-            <FaqAreaTwo />
+            <Faq />
           </main>
 
           {/* footer area */}

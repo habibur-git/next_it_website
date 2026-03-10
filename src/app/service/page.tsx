@@ -11,10 +11,10 @@ import ServiceHero from "@/components/service/service-hero";
 import ServiceSix from "@/components/service/service-six";
 import { Leaf } from "@/components/svg";
 import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
-import FaqAreaTwo from "@/components/faq/faq-area-2";
+import Faq from "@/components/faq/Faq";
+import Header from "@/components/layout/header/Header";
 import { servicePanel } from "@/utils/panel-animation";
 import { charAnimation, fadeAnimation } from "@/utils/title-animation";
 
@@ -33,7 +33,7 @@ const ServiceMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">
@@ -78,7 +78,7 @@ const ServiceMain = () => {
               </div>
             </div>
             {/* brand area */}
-            <FaqAreaTwo />
+            <Faq />
           </main>
 
           {/* footer area */}

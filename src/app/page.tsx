@@ -20,7 +20,8 @@ import Wrapper from "@/layouts/wrapper";
 
 // animation
 import AboutUs from "@/components/about/AboutUs";
-import FaqAreaTwo from "@/components/faq/faq-area-2";
+import Steps from "@/components/common/Steps";
+import Faq from "@/components/faq/Faq";
 import Hero from "@/components/hero-banner/hero";
 import Header from "@/components/layout/header/Header";
 import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
@@ -113,6 +114,8 @@ const HomeMain = () => {
 
             {/* project area */}
             <PortfolioGrid />
+
+            <Steps />
             {/* project area */}
             <Pricing />
             {/* award area */}
@@ -126,7 +129,7 @@ const HomeMain = () => {
             {/* testimonial area */}
             <Testimonials />
             {/* testimonial area */}
-            <FaqAreaTwo />
+            <Faq />
             {/* testimonial area */}
           </main>
 

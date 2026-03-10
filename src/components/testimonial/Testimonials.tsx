@@ -18,7 +18,7 @@ export default function Testimonials() {
 
   return (
     <section className="nt-space">
-      <div className="nt-container nt-mx-auto nt-px-4">
+      <div className="nt-container">
         {/* Header */}
         <div className="nt-flex nt-flex-col md:nt-flex-row md:nt-items-center md:nt-justify-between nt-gap-6 nt-mb-16">
           <h2 className="nt-text-center md:nt-text-left text-white">

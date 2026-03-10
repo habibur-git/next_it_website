@@ -13,6 +13,7 @@ import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
 import { charAnimation } from "@/utils/title-animation";
+import Header from "@/components/layout/header/Header";
 
 const ContactMain = () => {
   useScrollSmooth();
@@ -27,7 +28,7 @@ const ContactMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">

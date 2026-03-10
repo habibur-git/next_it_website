@@ -8,11 +8,11 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
 import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
 import BigText from "@/components/big-text";
 import BlogModern from "@/components/blog/blog-modern-area";
+import Header from "@/components/layout/header/Header";
 import { charAnimation } from "@/utils/title-animation";
 
 const BlogModernMain = () => {
@@ -28,7 +28,7 @@ const BlogModernMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">

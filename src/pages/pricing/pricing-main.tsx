@@ -6,12 +6,12 @@ import { gsap } from "gsap";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import FaqAreaTwo from "@/components/faq/faq-area-2";
+import Faq from "@/components/faq/Faq";
 import PricingArea from "@/components/pricing/pricing-area";
 import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
+import Header from "@/components/layout/header/Header";
 import { charAnimation, titleAnimation } from "@/utils/title-animation";
 
 const PricingMain = () => {
@@ -28,7 +28,7 @@ const PricingMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">
@@ -70,7 +70,7 @@ const PricingMain = () => {
               {/* pricing area */}
 
               {/* faq area */}
-              <FaqAreaTwo />
+              <Faq />
               {/* faq area */}
             </main>
 

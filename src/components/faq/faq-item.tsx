@@ -39,9 +39,7 @@ export default function FaqItem({ item, isOpen, onToggle }: IProps) {
         }}
       >
         <div className="nt-min-h-0 nt-overflow-hidden">
-          <p className="nt-text-grey-muted nt-pb-8 nt-pt-0">
-            {item.answer}
-          </p>
+          <p className="nt-text-grey-muted nt-pb-8 nt-pt-0">{item.answer}</p>
         </div>
       </div>
     </div>

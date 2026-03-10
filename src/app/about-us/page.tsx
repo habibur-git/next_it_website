@@ -11,9 +11,9 @@ import AboutUsHero from "@/components/about/about-us-hero";
 import BrandFive from "@/components/brand/brand-five";
 import FunFactOne from "@/components/fun-fact/fun-fact-one";
 import TeamOne from "@/components/team/team-one";
-import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
+import Header from "@/components/layout/header/Header";
 import AboutWork from "@/components/work/about-work";
 import FooterOne from "@/layouts/footers/footer-one";
 import { hoverBtn } from "@/utils/hover-btn";
@@ -41,7 +41,7 @@ const AboutUsMain = () => {
   return (
     <Wrapper>
       {/* header area start */}
-      <HeaderThree />
+      <Header />
       {/* header area end */}
 
       <div id="smooth-wrapper">

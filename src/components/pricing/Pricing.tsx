@@ -275,7 +275,7 @@ export default function Pricing() {
   const features = FEATURES_BY_CATEGORY[category];
 
   return (
-    <section className="nt-pt-0 nt-pb-24">
+    <section className="nt-pt-12 nt-pb-24">
       <div className="nt-container nt-mx-auto nt-px-4">
         <div className="nt-grid nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-mb-16">
           {/* Minimal header */}
@@ -320,7 +320,7 @@ export default function Pricing() {
             >
               <div className="nt-flex nt-flex-col nt-flex-1 nt-p-6 md:nt-p-7">
                 {plan.badge && (
-                  <span className="nt-text-xs nt-font-medium nt-text-theme nt-mb-3 nt-block">
+                  <span className="nt-text-xs nt-font-medium nt-text-theme nt-mb-3 nt-block ">
                     {plan.badge}
                   </span>
                 )}
@@ -329,7 +329,7 @@ export default function Pricing() {
                 </h4>
 
                 <div className="nt-mt-6 nt-flex nt-items-baseline nt-gap-1 nt-flex-wrap nt-gap-y-1">
-                  <span className="nt-font-title nt-text-white nt-text-h2 nt-font-bold nt-tabular-nums">
+                  <span className="nt-font-title nt-text-white nt-text-[40px] nt-font-bold nt-tabular-nums nt-mb-8">
                     {plan.priceLabel ??
                       (plan.monthlyPrice != null
                         ? `$${plan.monthlyPrice}`
