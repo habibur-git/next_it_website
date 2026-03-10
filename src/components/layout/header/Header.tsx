@@ -86,7 +86,7 @@ export default function Header({ variant = "auto" }: HeaderProps) {
             stiffness: 180,
             damping: 25,
           }}
-          className="nt-w-full nt-h-16 nt-flex nt-items-center nt-justify-between nt-px-1.5"
+          className="nt-w-full nt-h-16 nt-flex nt-items-center nt-justify-between nt-px-1.5 nt-pl-6"
         >
           {/* Logo: 2 images – full when not scrolled, icon when scrolled */}
           <Link href="/" className="nt-flex nt-items-center ml-8">

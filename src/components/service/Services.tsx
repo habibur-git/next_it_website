@@ -93,7 +93,7 @@ export default function Services() {
           }}
         >
           {featuredServices.map((service) => (
-            <SwiperSlide key={service.slug}>
+            <SwiperSlide key={service.number}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
