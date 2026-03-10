@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* font family */
+  --body-font-family: "Syne", sans-serif;
+  --title-font-family: "Syne", sans-serif;
+  --font-gallery: "gallery_modernregular", sans-serif;
+  --font-shoulders: "Big Shoulders Display", cursive;
+  --font-marcellus: "Marcellus", sans-serif;
+  --font-aladin: "Aladin", system-ui;
+  --font-fontawesome: "Font Awesome 6 Pro";
+
+  /* font size */
+
+  --heading-h1: 72px;
+  --heading-h2: 54px;
+  --heading-h3: 36px;
+  --heading-h4: 28px;
+  --heading-h5: 24px;
+  --heading-h6: 20px;
+
+  --base: 16px;
+  --small: 14px;
+
+  /* colors */
+  --common-white-color: #f5f7f5;
+  --common-white-rgb: 245 247 245;
+  --white-color: #fff;
+  --white-rgb: 255 255 255;
+  --bg-color: #1e1e1e;
+  --bg-color-rgb: 30 30 30;
+  --bg-color-2: #1e1e1e;
+  --bg-color-2-rgb: 30 30 30;
+  --bg-color-3: #141414;
+  --bg-color-3-rgb: 20 20 20;
+  --body-color: #121212;
+  --body-color-rgb: 18 18 18;
+  --common-orange-color: #eb5939;
+  --common-orange-rgb: 235 89 57;
+  --grey-color-1: #262626;
+  --grey-color-1-rgb: 38 38 38;
+  --grey-color-2: #f4f4f4;
+  --grey-color-2-rgb: 244 244 244;
+  --grey-color-3: #5d5d63;
+  --grey-color-3-rgb: 93 93 99;
+  --grey-color-4: #f7f7f7;
+  --grey-color-4-rgb: 247 247 247;
+  --text-body-color: #5d5d63;
+  --text-body-color-rgb: 93 93 99;
+  --theme-color: #ffcf01;
+  --theme-color-rgb: 255 207 1;
+  --border-color: #eaeaeb;
+  --border-color-rgb: 234 234 235;
+}
+
+@layer utilities {
+  .nt-container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  @media (min-width: 768px) {
+    .nt-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .nt-container {
+      max-width: 1280px;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  .nt-space {
+    @apply nt-py-24 nt-px-0;
+  }
+  /* Hero background: dot grid using theme color */
+  .nt-hero-dots {
+    background-image: radial-gradient(
+      circle,
+      rgb(var(--theme-color-rgb) / 0.15) 1px,
+      transparent 1px
+    );
+    background-size: 24px 24px;
+  }
+  .nt-faq-item {
+    border-bottom: 1px solid #ffffff16;
+    border-radius: 0.5rem 0.5rem 0 0;
+    overflow: hidden;
+    &:hover {
+      border-bottom: 1px solid #ffffff80;
+      transition: border-bottom 0.3s ease-in-out;
+      transition-delay: 0.1s;
+    }
+  }
+  .nt-container,
+  .container {
+    max-width: 1440px !important;
+  }
+}
