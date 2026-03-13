@@ -1,9 +1,9 @@
-import React from "react";
 import Image from "next/image";
 // images
-import location_1 from "@/assets/img/inner-contact/contact/info-1.jpg";
-import location_2 from "@/assets/img/inner-contact/contact/info-2.jpg";
-import location_3 from "@/assets/img/inner-contact/contact/info-3.jpg";
+// images
+import location_1 from "@/assets/img/bd.webp";
+import location_3 from "@/assets/img/ku.webp";
+import location_2 from "@/assets/img/ml.jpg";
 import Link from "next/link";
 
 // data
@@ -11,32 +11,34 @@ const location_data = [
   {
     id: 1,
     img: location_1,
-    country: "France",
-    time: "12:00 pm GMT+2",
-    location_title: "Base Create",
-    address: "Base Creative, 43 Appleton <br /> Lane, 3287 Hamilton",
-    phone: "(+91) 76001726",
-    email: "Hello@contact.com",
+    country: "Bangladesh",
+    time: "GMT+6",
+    location_title: "Dhaka Office",
+    address:
+      "H/1, Road-6, Duaripara Bazar, <br /> Rupnagar, Mirpur, Dhaka-1216",
+    phone: "(+880) 1690274952",
+    email: "contact@devionex.com",
   },
   {
     id: 2,
     img: location_2,
-    country: "Germany",
-    time: "11:00 pm GMT+2",
-    location_title: "Base Create",
-    address: "Base Creative, 43 Appleton <br /> Lane, 3287 Hamilton",
-    phone: "(+91) 76001726",
-    email: "Hello@contact.com",
+    country: "Malaysia",
+    time: "GMT+8",
+    location_title: "Malaysia Office",
+    address: "Seri Kembangan, Selangor, <br /> Malaysia 43300",
+    phone: "(+880) 1690274952",
+    email: "contact@devionex.com",
   },
   {
     id: 3,
     img: location_3,
-    country: "New Zealand",
-    time: "10:00 pm GMT+2",
-    location_title: "Base Create",
-    address: "Base Creative, 43 Appleton <br /> Lane, 3287 Hamilton",
-    phone: "(+91) 76001726",
-    email: "Hello@contact.com",
+    country: "Kuwait",
+    time: "GMT+3",
+    location_title: "Update my location",
+    address:
+      "Al-Mubarakah: Fahad Al-Basman Heritage Complex, <br /> Ground Floor, Shop No. 16",
+    phone: "(+880) 1690274952",
+    email: "contact@devionex.com",
   },
 ];
 
@@ -51,7 +53,13 @@ const ContactLocation = () => {
                 <div className="col-xl-7">
                   <div className="cn-contact-left d-flex flex-wrap align-items-center">
                     <div className="cn-contact-info-thumb">
-                      <Image src={item.img} alt="image" style={{ height: "auto" }} />
+                      <Image
+                        src={item.img}
+                        alt="image"
+                        width={100}
+                        height={100}
+                        style={{ height: "auto" }}
+                      />
                     </div>
                     <div className="cn-contact-left-info">
                       <h4 className="cn-contact-left-title">{item.country}</h4>
@@ -75,13 +83,20 @@ const ContactLocation = () => {
                           dangerouslySetInnerHTML={{ __html: item.address }}
                         ></Link>
                       </div>
-                      <div className="cn-contact-map">
-                        <Link href="#">Google Maps</Link>
+                      <div className="nt-flex nt-flex-col nt-gap-2">
+                        <Link
+                          className="nt-text-h6 nt-text-white"
+                          href={`tel:${item.phone.replace(/\s/g, "")}`}
+                        >
+                          {item.phone}
+                        </Link>
+                        <Link
+                          className="nt-text-h6 nt-text-white"
+                          href={`mailto:${item.email}`}
+                        >
+                          {item.email}
+                        </Link>
                       </div>
-                    </div>
-                    <div className="cn-contact-right-info text-start text-md-end">
-                      <Link href="tel:(+91)76001726">{item.phone}</Link> <br />
-                      <Link href="mailto:Hello@contact.com">{item.email}</Link>
                     </div>
                   </div>
                 </div>
