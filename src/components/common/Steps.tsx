@@ -43,7 +43,7 @@ const steps = [
 
 export default function Steps() {
   return (
-    <section className=" nt-py-24">
+    <section className="nt-py-12 nt-pt-0 md:nt-py-16 lg:nt-py-24">
       <div className="nt-container">
         <ModuleTitle
           suppertitle="Our Process"

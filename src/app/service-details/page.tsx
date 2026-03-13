@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
 import ServiceDetailsArea from "@/components/service/service-details-area";
-import FooterTwo from "@/layouts/footers/footer-one";
+import FooterTwo from "@/components/layout/footer/Footer";
 import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation

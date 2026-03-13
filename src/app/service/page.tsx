@@ -10,7 +10,7 @@ import { BrandItems } from "@/components/brand/brand-two";
 import ServiceHero from "@/components/service/service-hero";
 import ServiceSix from "@/components/service/service-six";
 import { Leaf } from "@/components/svg";
-import FooterTwo from "@/layouts/footers/footer-one";
+import FooterTwo from "@/components/layout/footer/Footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
 import Faq from "@/components/faq/Faq";

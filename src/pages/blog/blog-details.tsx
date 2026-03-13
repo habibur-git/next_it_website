@@ -9,13 +9,12 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 import BlogDetailsArea from "@/components/blog/details/blog-details-area";
 import BlogDetailsBreadcrumb from "@/components/blog/details/blog-details-breadcrumb";
 import BlogDetailsRelatedPosts from "@/components/blog/details/blog-details-related-posts";
-import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
+import FooterTwo from "@/layouts/footers/footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
+import Header from "@/components/layout/header/Header";
 import { IdProps } from "@/types/custom-d-t";
 import { charAnimation } from "@/utils/title-animation";
-import Header from "@/components/layout/header/Header";
 
 const BlogDetailsMain = ({ id }: IdProps) => {
   useScrollSmooth();

@@ -275,9 +275,9 @@ export default function Pricing() {
   const features = FEATURES_BY_CATEGORY[category];
 
   return (
-    <section className="nt-pt-12 nt-pb-24">
+    <section className="nt-pt-12 nt-pb-0 md:nt-pb-24 lg:nt-pb-24">
       <div className="nt-container nt-mx-auto nt-px-4">
-        <div className="nt-grid nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-mb-16">
+        <div className="nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-mb-16">
           {/* Minimal header */}
           <div className="nt-col-span-5">
             <h2 className="nt-text-h2 nt-text-white">Pricing</h2>

@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/ui/button";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const DOT_SPACING = 24;
 const DOT_RADIUS = 1;
@@ -10,6 +10,13 @@ const MAGNET_STRENGTH = 14;
 const COLOR_RADIUS = 180;
 const BASE_OPACITY = 0;
 const MAX_OPACITY = 0.5;
+
+const STATS = [
+  { value: 120, suffix: "+", label: "Project Complete" },
+  { value: 60, suffix: "+", label: "Happy Clients" },
+  { value: 5, suffix: "+", label: "Years of experience" },
+  { value: 15, suffix: "+", label: "Team members" },
+] as const;
 
 function getThemeRgb(): [number, number, number] {
   if (typeof window === "undefined") return [51, 110, 249];
@@ -28,6 +35,9 @@ const Hero = () => {
   const cursorRef = useRef({ x: -1000, y: -1000 });
   const dotsRef = useRef<{ x: number; y: number }[]>([]);
   const rafRef = useRef<number>(0);
+  const [statCounts, setStatCounts] = useState<number[]>(() =>
+    STATS.map(() => 0),
+  );
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -129,10 +139,29 @@ const Hero = () => {
     };
   }, [draw]);
 
+  // Animate stats from 0 to their target values
+  useEffect(() => {
+    let frameId: number;
+    const duration = 1500; // ms
+    const start = performance.now();
+
+    const animate = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      setStatCounts(STATS.map((stat) => Math.round(stat.value * progress)));
+      if (progress < 1) {
+        frameId = requestAnimationFrame(animate);
+      }
+    };
+
+    frameId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
   return (
     <section
       ref={sectionRef}
-      className="nt-relative nt-h-screen nt-flex nt-flex-col nt-items-center nt-justify-between nt-px-4 nt-py-20 nt-overflow-hidden"
+      className="nt-relative nt-h-full lg:nt-h-screen nt-flex nt-flex-col nt-items-center nt-justify-between nt-px-4 nt-py-20 nt-pb-16 nt-overflow-hidden"
     >
       {/* Canvas dot grid: magnet + theme color by cursor */}
       <canvas
@@ -144,7 +173,7 @@ const Hero = () => {
       {/* Content (above canvas) */}
       <div className="nt-relative nt-z-10 nt-flex nt-flex-col nt-items-center nt-mt-28 nt-max-w-8xl nt-mx-auto">
         {/* Open to Work badge */}
-        <div className="nt-inline-flex nt-items-center nt-gap-2 nt-rounded-full nt-px-4 nt-py-2 nt-mb-8 nt-bg-green-500/15 nt-border nt-border-green-500/30">
+        <div className="nt-inline-flex nt-items-center nt-gap-2 nt-rounded-full nt-px-4 nt-py-2 nt-mb-5 nt-bg-green-500/15 nt-border nt-border-green-500/30">
           <span className="nt-w-2 nt-h-2 nt-rounded-full nt-bg-green-500 nt-shrink-0" />
           <span className="nt-text-small nt-font-medium nt-text-green-400">
             Open to Work
@@ -152,20 +181,27 @@ const Hero = () => {
         </div>
 
         {/* Headline */}
-        <h1 className="nt-font-title nt-text-white nt-text-center nt-text-h1 md:nt-text-h1 nt-font-bold nt-leading-tight">
-          Web & Brand Design
+        <h1 className="nt-font-title nt-text-white nt-text-center nt-leading-tight nt-font-semibold nt-text-[40px] md:nt-text-h2 lg:nt-text-h1">
+          Building{" "}
+          <span className="nt-text-theme nt-text-[40px] md:nt-text-h2 lg:nt-text-h1 nt-font-semibold">
+            Powerful
+          </span>{" "}
+          Brands
           <br />
-          For Ambitious Founders
+          for Global Business{" "}
+          <span className="nt-text-theme nt-text-[40px] md:nt-text-h2 lg:nt-text-h1 nt-font-semibold">
+            Growth
+          </span>
         </h1>
 
         {/* Description */}
-        <p className="nt-text-grey-muted nt-text-base nt-text-center nt-mt-3">
-          We build conversion-driven websites and marketing that attract,
-          engage, and convert.
+        <p className="nt-text-white/70 nt-text-base nt-text-center nt-mt-3">
+          Providing expert branding, digital marketing, website development, and
+          creative design solutions to help businesses grow worldwide.
         </p>
 
         {/* CTAs */}
-        <div className="nt-flex nt-flex-wrap nt-items-center nt-justify-center nt-gap-4 nt-mt-10">
+        <div className="nt-flex nt-flex-wrap nt-items-center nt-justify-center nt-gap-4 nt-mt-8">
           <Button
             label="Book A Call"
             href="/contact"
@@ -180,18 +216,14 @@ const Hero = () => {
         <div className="nt-w-full">
           {/* Stat cards */}
           <div className="nt-grid nt-grid-cols-2 md:nt-grid-cols-4 nt-gap-4">
-            {[
-              { value: "60+", label: "Projects completed" },
-              { value: "16+", label: "Awards Received" },
-              { value: "12+", label: "Years of experience" },
-              { value: "34+", label: "Team members" },
-            ].map((stat) => (
+            {STATS.map((stat, index) => (
               <div
                 key={stat.label}
-                className="nt-rounded-xl nt-border nt-border-white/10 nt-bg-white/5 nt-p-4 nt-text-center nt-flex nt-items-center nt-justify-center nt-flex-col nt-h-full"
+                className="nt-rounded-xl nt-border w-max nt-text-center nt-flex nt-items-center nt-justify-center nt-flex-col"
               >
                 <p className="nt-text-white nt-text-h3 nt-font-bold nt-tabular-nums nt-mb-1">
-                  {stat.value}
+                  {statCounts[index]}
+                  {stat.suffix}
                 </p>
                 <p className="nt-text-white/50 nt-text-small nt-mb-0">
                   {stat.label}

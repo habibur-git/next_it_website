@@ -1,59 +1,62 @@
-import { useIsotop } from "@/hooks/use-isotop";
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UpArrow } from "../svg";
 
-const FILTERS = [
-  { id: "*", label: "ALL" },
-  { id: ".cat1", label: "Social Media" },
-  { id: ".cat2", label: "Branding" },
-  { id: ".cat3", label: "WebSite" },
-  { id: ".cat4", label: "Video" },
-  { id: ".cat5", label: "Printing" },
-] as const;
+const cardVariants = {
+  rest: {},
+  hover: {},
+};
+
+const overlayVariants = {
+  rest: { y: "100%" },
+  hover: { y: 0 },
+};
+
+const imageVariants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.05 },
+};
 
 // data
 const portfolio_data = [
   {
     id: 1,
-    img: "/assets/img/portfolio/masturd-oil-design.webp",
+    img: "/assets/img/portfolio/P-1-.webp",
     category: "Shooting",
     title: "Roadtrip",
     year: "2024",
-    show: "cat2 cat4 cat3",
   },
   {
     id: 2,
-    img: "/assets/img/portfolio/masturd-oil-design.webp",
+    img: "/assets/img/portfolio/P-2.webp",
     category: "Studio",
     title: "Fashion",
     year: "2023",
-    show: "cat3 cat1 cat3",
   },
   {
     id: 3,
-    img: "/assets/img/portfolio/masturd-oil-design.webp",
+    img: "/assets/img/portfolio/p-4.webp",
     category: "Agency",
     title: "Tesla",
     year: "2022",
-    show: "cat4 cat4 cat2 cat3",
   },
   {
     id: 4,
-    img: "/assets/img/portfolio/masturd-oil-design.webp",
+    img: "/assets/img/portfolio/p-5-3.webp",
     category: "Studio",
     title: "Cosmetic",
     year: "2024",
-    show: "cat1 cat4 cat3",
   },
   {
     id: 5,
-    img: "/assets/img/portfolio/masturd-oil-design.webp",
+    img: "/assets/img/portfolio/uyq -7.webp",
     category: "Visual",
     title: "Porsche",
     year: "2024",
-    show: "cat4 cat1 cat2",
   },
   {
     id: 6,
@@ -61,98 +64,119 @@ const portfolio_data = [
     category: "Agency",
     title: "Fiedunit",
     year: "2024",
-    show: "cat1 cat2 cat3 cat4",
   },
 ];
 
-export default function PortfolioGrid() {
-  const { initIsotop, isotopContainer } = useIsotop();
-  const [activeFilter, setActiveFilter] = useState<string>("*");
+// get unique categories
+const categories = [
+  "ALL",
+  ...Array.from(new Set(portfolio_data.map((item) => item.category))),
+];
 
-  useEffect(() => {
-    initIsotop();
-  }, [initIsotop]);
+export default function PortfolioGrid() {
+  const [activeFilter, setActiveFilter] = useState<string>("ALL");
+
+  // filtering
+  const filteredProjects =
+    activeFilter === "ALL"
+      ? portfolio_data
+      : portfolio_data.filter((item) => item.category === activeFilter);
 
   return (
-    <div className="nt-py-24 nt-pb-[60px]">
+    <div className="nt-space">
       <div className="nt-container">
-        <div className="nt-flex nt-justify-between nt-items-center nt-mb-16">
-          <h2 className="nt-text-h2 nt-text-white nt-mb-0">Our Projects</h2>
-          {/* Keep Isotope's .masonary-menu hook so filters work; container and active pill use explicit bg */}
-          <div className="masonary-menu nt-inline-flex nt-rounded-xl nt-p-1 nt-border nt-border-white/20 nt-bg-white/[0.12]">
-            {FILTERS.map((filter) => {
-              const isActive = activeFilter === filter.id;
-              return (
-                <button
-                  key={filter.id}
-                  type="button"
-                  data-filter={filter.id}
-                  onClick={() => setActiveFilter(filter.id)}
-                  className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-duration-200 ${
-                    isActive
-                      ? "nt-bg-white nt-text-body nt-shadow-sm active"
-                      : "nt-bg-transparent nt-text-white/70 hover:nt-text-white"
-                  }`}
-                >
-                  <span>{filter.label}</span>
-                </button>
-              );
-            })}
+        {/* Header */}
+        <div className="nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-mb-16">
+          <div className="nt-col-span-5">
+            <h2 className="nt-text-h2 nt-text-white">Our Projects</h2>
+          </div>
+
+          {/* Filters */}
+          <div className="nt-col-span-7 nt-flex nt-justify-end">
+            <div className="nt-inline-flex nt-rounded-xl nt-bg-white/5 nt-p-1 nt-border nt-border-white/10">
+              {categories.map((cat) => {
+                const isActive = activeFilter === cat;
+
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveFilter(cat)}
+                    className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all ${
+                      isActive
+                        ? "nt-bg-white nt-text-body nt-shadow-sm"
+                        : "nt-text-white/70 hover:nt-text-white"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
+
+        {/* Grid */}
         <div className="nt-grid nt-grid-cols-1 md:nt-grid-cols-2 nt-gap-8">
-          {portfolio_data.map((item) => (
-            <div key={item.id} className={`grid-item ${item.show}`}>
-              <div
-                className="tp-project-5-2-thumb anim-zoomin-wrap not-hide-cursor nt-relative nt-w-full nt-h-[660px]"
-                data-cursor="View<br>Demo"
+          {filteredProjects.map((item) => (
+            <motion.div
+              key={item.id}
+              className="nt-relative nt-w-full nt-h-[500px] lg:nt-h-[660px] nt-overflow-hidden"
+              variants={cardVariants}
+              initial="rest"
+              whileHover="hover"
+            >
+              <Link
+                href="/portfolio/portfolio-details"
+                className="nt-block nt-w-full nt-h-full nt-relative"
               >
-                <Link
-                  href="/portfolio/portfolio-details"
-                  className="cursor-hide"
+                <motion.div
+                  className="nt-absolute nt-inset-0 nt-w-full nt-h-full nt-overflow-hidden"
+                  variants={imageVariants}
+                  transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                   <Image
                     src={item.img}
-                    alt="port-img"
-                    fill
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    className="anim-zoomin nt-object-cover"
+                    alt={item.title}
+                    width={800}
+                    height={660}
+                    className="nt-w-full nt-h-full nt-object-cover"
                   />
-                  <div className="tp-project-5-2-category tp_fade_anim nt-absolute nt-left-4 nt-top-4 nt-text-white nt-text-small nt-font-medium">
-                    <span>{item.category}</span>
-                  </div>
-                  <div className="tp-project-5-2-content tp_fade_anim nt-absolute nt-bottom-4 nt-left-4 nt-right-4">
-                    <span className="nt-text-white/70 nt-text-small">
-                      {item.year}
-                    </span>
-                    <h4 className="nt-text-white nt-font-title nt-text-h5 nt-mt-1">
+                </motion.div>
+
+                {/* Hover overlay: slides up from bottom -100% to 0 */}
+                <motion.div
+                  className="nt-absolute nt-inset-0 nt-w-full nt-h-full nt-bg-gradient-to-t nt-from-black/90 nt-via-black/40 nt-to-transparent nt-flex nt-items-end nt-justify-start nt-p-6 nt-z-10"
+                  variants={overlayVariants}
+                  transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
+                  <div className="nt-space-y-1">
+                    <h4 className="nt-text-white nt-text-xl nt-font-semibold">
                       {item.title}
                     </h4>
+                    <span className="nt-text-white/80 nt-text-sm">
+                      {item.category} · {item.year}
+                    </span>
                   </div>
-                </Link>
-              </div>
-            </div>
+                </motion.div>
+              </Link>
+            </motion.div>
           ))}
         </div>
-        <div className="row">
-          <div className="col-xl-12">
-            <div className="tp-projct-5-2-btn-box mt-50 d-flex justify-content-center">
-              <div className="tp-hover-btn-wrapper">
-                <Link
-                  className="tp-btn-circle style-2 tp-hover-btn-item tp-hover-btn"
-                  href="/portfolio-grid-col-4-fullwidth"
-                >
-                  <span className="tp-btn-circle-text">
-                    More <br /> Projects
-                  </span>
-                  <span className="tp-btn-circle-icon">
-                    <UpArrow />
-                  </span>
-                  <i className="tp-btn-circle-dot"></i>
-                </Link>
-              </div>
-            </div>
-          </div>
+
+        {/* Button */}
+        <div className="nt-mt-16 nt-flex nt-justify-center">
+          <Link
+            className="tp-btn-circle style-2"
+            href="/portfolio-grid-col-4-fullwidth"
+          >
+            <span className="tp-btn-circle-text">
+              More <br /> Projects
+            </span>
+
+            <span className="tp-btn-circle-icon">
+              <UpArrow />
+            </span>
+          </Link>
         </div>
       </div>
     </div>

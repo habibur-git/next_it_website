@@ -7,7 +7,7 @@ import { gsap } from "gsap";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import FooterTwo from "@/layouts/footers/footer-one";
+import FooterTwo from "@/components/layout/footer/Footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
 import BigText from "@/components/big-text";

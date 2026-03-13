@@ -55,6 +55,48 @@
   --border-color-rgb: 234 234 235;
 }
 
+/* Base typography and colors from :root (main design tokens) */
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply nt-text-title nt-font-bold nt-font-title;
+  }
+  h1 {
+    @apply nt-text-5xl md:nt-text-h1;
+  }
+
+  h2 {
+    @apply nt-text-4xl md:nt-text-h2;
+  }
+
+  h3 {
+    @apply nt-text-h3;
+  }
+  h4 {
+    @apply nt-text-h4;
+  }
+  h5 {
+    @apply nt-text-h5;
+  }
+  h6 {
+    @apply nt-text-h6;
+  }
+
+  li,
+  span,
+  p {
+    @apply nt-text-base nt-text-desc nt-font-normal nt-font-title;
+  }
+
+  label {
+    @apply nt-text-[15px] nt-block nt-font-medium nt-text-title nt-font-title nt-mb-0;
+  }
+}
+
 @layer utilities {
   .nt-container {
     width: 100%;

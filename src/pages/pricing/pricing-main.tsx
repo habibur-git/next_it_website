@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 // internal imports
 import Faq from "@/components/faq/Faq";
 import PricingArea from "@/components/pricing/pricing-area";
-import FooterTwo from "@/layouts/footers/footer-one";
+import FooterTwo from "@/components/layout/footer/Footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
 import Header from "@/components/layout/header/Header";

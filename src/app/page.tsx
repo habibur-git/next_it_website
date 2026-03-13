@@ -13,7 +13,6 @@ gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
 import BrandOne from "@/components/brand/brand-one";
-import FooterOne from "@/layouts/footers/footer-one";
 import Wrapper from "@/layouts/wrapper";
 
 // images
@@ -23,6 +22,7 @@ import AboutUs from "@/components/about/AboutUs";
 import Steps from "@/components/common/Steps";
 import Faq from "@/components/faq/Faq";
 import Hero from "@/components/hero-banner/hero";
+import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
 import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
 import Pricing from "@/components/pricing/Pricing";
@@ -86,56 +86,24 @@ const HomeMain = () => {
       <div id="magic-cursor">
         <div id="ball"></div>
       </div>
-      {/* magic cursor end */}
 
-      {/* header area start */}
       <Header />
-      {/* header area end */}
 
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
-            {/* hero area start */}
             <Hero />
-            {/* hero area end */}
             <AboutUs />
-            {/* video area */}
-            {/* <VideOne /> */}
-            {/* video area */}
-
-            {/* brand area */}
             <BrandOne />
-            {/* brand area */}
-
-            {/* service area */}
-            {/* <ServiceOne /> */}
             <Services />
-            {/* service area */}
-
-            {/* project area */}
             <PortfolioGrid />
-
             <Steps />
-            {/* project area */}
             <Pricing />
-            {/* award area */}
-            {/* <AwardOne /> */}
-            {/* award area */}
-
-            {/* team area */}
-            {/* <TeamOne /> */}
-            {/* team area */}
-
-            {/* testimonial area */}
             <Testimonials />
-            {/* testimonial area */}
-            <Faq />
-            {/* testimonial area */}
+            <Faq data="home" />
           </main>
 
-          {/* footer area */}
-          <FooterOne />
-          {/* footer area */}
+          <Footer />
         </div>
       </div>
     </Wrapper>

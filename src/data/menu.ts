@@ -1,5 +1,6 @@
 import React from "react";
-import { RiFacebookFill, RiLinkedinFill, RiTwitterXFill } from "react-icons/ri";
+import { RiLinkedinFill } from "react-icons/ri";
+import { SiBehance, SiDribbble, SiFacebook } from "react-icons/si";
 
 export type MenuItem = {
   id: number;
@@ -29,7 +30,28 @@ export const socialMediaLinks: {
   image?: string;
   label: string;
 }[] = [
-  { id: 1, href: "https://facebook.com", icon: RiFacebookFill, label: "Facebook" },
-  { id: 2, href: "https://twitter.com", icon: RiTwitterXFill, label: "Twitter" },
-  { id: 3, href: "https://linkedin.com", icon: RiLinkedinFill, label: "LinkedIn" },
+  {
+    id: 1,
+    href: "https://clutch.co",
+    icon: SiFacebook,
+    label: "Follow us on Facebook",
+  },
+  {
+    id: 2,
+    href: "https://behance.net",
+    icon: SiBehance,
+    label: "Follow us on Behance",
+  },
+  {
+    id: 3,
+    href: "https://dribbble.com",
+    icon: SiDribbble,
+    label: "Follow us on Dribbble",
+  },
+  {
+    id: 4,
+    href: "https://linkedin.com",
+    icon: RiLinkedinFill,
+    label: "Follow us on LinkedIn",
+  },
 ];

@@ -1,16 +1,26 @@
 "use client";
 
+import {
+  faqData,
+  type FaqItem as FaqItemType,
+  type FaqSectionKey,
+} from "@/data/faq";
 import { useState } from "react";
-import { faq_data } from "./faq-area";
 import FaqItem from "./faq-item";
 
-export default function Faq() {
+type FaqProps = {
+  /** Which FAQ dataset to use (home, aboutus, services). Defaults to "home". */
+  data?: FaqSectionKey;
+};
+
+export default function Faq({ data = "home" }: FaqProps) {
   const [openId, setOpenId] = useState<number | null>(null);
+  const items: FaqItemType[] = faqData[data];
 
   return (
     <div className="nt-space">
       <div className="nt-container">
-        <div className="nt-grid nt-grid-cols-12 nt-gap-10 nt-w-full nt-mb-16">
+        <div className="nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-w-full nt-mb-16">
           <div className="nt-col-span-5">
             <h2 className="nt-text-h2 nt-text-white">
               Frequently Asked Question
@@ -22,7 +32,7 @@ export default function Faq() {
           </div>
           <div className="nt-col-span-7 nt-flex nt-justify-end">
             <div className="nt-border nt-border-white/10">
-              {faq_data.map((item) => (
+              {items.map((item) => (
                 <FaqItem
                   key={item.id}
                   item={item}

@@ -7,13 +7,12 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
 import BigText from "@/components/big-text";
-import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
+import FooterTwo from "@/components/layout/footer/Footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
 import FaqArea from "@/components/faq/faq-area";
-import { charAnimation, titleAnimation } from "@/utils/title-animation";
 import Header from "@/components/layout/header/Header";
+import { charAnimation, titleAnimation } from "@/utils/title-animation";
 
 const FaqMain = () => {
   useScrollSmooth();

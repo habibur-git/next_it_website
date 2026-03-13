@@ -8,12 +8,11 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 // internal imports
 import ContactLocation from "@/components/contact/contact-location";
 import ContactTwo from "@/components/contact/contact-two";
-import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
+import FooterTwo from "@/components/layout/footer/Footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
-import { charAnimation } from "@/utils/title-animation";
 import Header from "@/components/layout/header/Header";
+import { charAnimation } from "@/utils/title-animation";
 
 const ContactMain = () => {
   useScrollSmooth();

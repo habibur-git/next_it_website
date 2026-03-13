@@ -1,17 +1,16 @@
 "use client";
+import Button from "@/components/ui/button";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
 import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
 import { gsap } from "gsap";
 import Image from "next/image";
-import Button from "@/components/ui/button";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
 import error from "@/assets/img/error/error.png";
-import FooterTwo from "@/layouts/footers/footer-one";
-import HeaderThree from "@/layouts/headers/header-three";
-import Wrapper from "@/layouts/wrapper";
 import Header from "@/components/layout/header/Header";
+import FooterTwo from "@/components/layout/footer/Footer";
+import Wrapper from "@/layouts/wrapper";
 
 const ErrorMain = () => {
   useScrollSmooth();

@@ -10,12 +10,11 @@ import AboutUsArea from "@/components/about/about-us-area";
 import AboutUsHero from "@/components/about/about-us-hero";
 import BrandFive from "@/components/brand/brand-five";
 import FunFactOne from "@/components/fun-fact/fun-fact-one";
-import TeamOne from "@/components/team/team-one";
+import Team from "@/components/team/Team";
 import Wrapper from "@/layouts/wrapper";
 // animation
+import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
-import AboutWork from "@/components/work/about-work";
-import FooterOne from "@/layouts/footers/footer-one";
 import { hoverBtn } from "@/utils/hover-btn";
 import { teamMarqueAnim } from "@/utils/scroll-marque";
 import {
@@ -56,10 +55,7 @@ const AboutUsMain = () => {
             {/* about area */}
 
             {/* team area */}
-            <TeamOne spacing="" />
-            {/* team area */}
-
-            <AboutWork />
+            <Team />
 
             {/* fun fact area */}
             <FunFactOne />
@@ -71,7 +67,7 @@ const AboutUsMain = () => {
           </main>
 
           {/* footer area */}
-          <FooterOne />
+          <Footer />
           {/* footer area */}
         </div>
       </div>

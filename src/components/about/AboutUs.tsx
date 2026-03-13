@@ -42,30 +42,23 @@ export default function AboutUs() {
           >
             <h3 className="nt-text-h3 nt-text-white nt-mb-8">About Us</h3>
             <p className="nt-text-xl md:nt-text-2xl nt-text-white/90 nt-leading-relaxed nt-max-w-4xl nt-mb-16">
-              NextIT is a{" "}
+              Next IT is a{" "}
               <strong className="nt-text-theme nt-font-medium">
-                Dhaka-based growth partner
+                global branding and digital solutions agency
               </strong>{" "}
-              for the{" "}
+              helping businesses build powerful brands and grow in the digital
+              world. Through{" "}
               <strong className="nt-text-theme nt-font-medium">
-                digital age
+                creativity, strategy, and technology
               </strong>
-              . We fuse{" "}
+              , we deliver impactful branding, web development, and digital
+              marketing solutions that create{" "}
               <strong className="nt-text-theme nt-font-medium">
-                data-driven strategy
+                meaningful brand experiences
               </strong>{" "}
-              with{" "}
+              and drive{" "}
               <strong className="nt-text-theme nt-font-medium">
-                creative excellence
-              </strong>{" "}
-              to{" "}
-              <strong className="nt-text-theme nt-font-medium">
-                bridge the gap
-              </strong>{" "}
-              between your brand and your audience—turning complex challenges
-              into{" "}
-              <strong className="nt-text-theme nt-font-medium">
-                measurable success
+                long-term growth
               </strong>
               .
             </p>
@@ -76,17 +69,17 @@ export default function AboutUs() {
             <div className="nt-mt-12 nt-flex nt-flex-wrap nt-gap-4">
               <div className="nt-flex nt-items-center nt-gap-3 nt-px-5 nt-py-2.5 nt-bg-white/5 nt-rounded-full nt-border nt-border-white/10 nt-text-xs nt-font-medium nt-text-white/70 hover:nt-bg-white/10 nt-transition-colors">
                 <RiShieldCheckLine className="nt-w-4 nt-h-4 nt-text-theme nt-shrink-0" />
-                Data-Driven Strategy
+                Branding & Identity
               </div>
 
               <div className="nt-flex nt-items-center nt-gap-3 nt-px-5 nt-py-2.5 nt-bg-white/5 nt-rounded-full nt-border nt-border-white/10 nt-text-xs nt-font-medium nt-text-white/70 hover:nt-bg-white/10 nt-transition-colors">
                 <RiGlobalLine className="nt-w-4 nt-h-4 nt-text-theme nt-shrink-0" />
-                Creative Excellence
+                Web Development
               </div>
 
               <div className="nt-flex nt-items-center nt-gap-3 nt-px-5 nt-py-2.5 nt-bg-white/5 nt-rounded-full nt-border nt-border-white/10 nt-text-xs nt-font-medium nt-text-white/70 hover:nt-bg-white/10 nt-transition-colors">
                 <RiSparkling2Line className="nt-w-4 nt-h-4 nt-text-theme nt-shrink-0" />
-                Measurable Success
+                Digital Marketing
               </div>
             </div>
             <Image

@@ -1,9 +1,9 @@
 "use client";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useGSAP } from "@gsap/react";
-import { useState } from "react";
 import { gsap } from "gsap";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
 
 export default function useScrollSmooth() {
   const [isScrollSmooth] = useState<boolean>(true);
