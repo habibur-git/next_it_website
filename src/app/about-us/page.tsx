@@ -13,6 +13,7 @@ import FunFactOne from "@/components/fun-fact/fun-fact-one";
 import Team from "@/components/team/Team";
 import Wrapper from "@/layouts/wrapper";
 // animation
+import Faq from "@/components/faq/Faq";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
 import { hoverBtn } from "@/utils/hover-btn";
@@ -64,6 +65,7 @@ const AboutUsMain = () => {
             {/* brand area */}
             <BrandFive />
             {/* brand area */}
+            <Faq data="aboutus" />
           </main>
 
           {/* footer area */}
