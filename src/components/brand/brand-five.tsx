@@ -11,30 +11,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Swiper CSS - loaded asynchronously via Next.js
 import "swiper/css";
 
-// images
-import b_1 from "@/assets/img/inner-about/brand/brand-1.png";
-import {
-  default as b_2,
-  default as b_6,
-} from "@/assets/img/inner-about/brand/brand-2.png";
-import b_3 from "@/assets/img/inner-about/brand/brand-3.png";
-import b_4 from "@/assets/img/inner-about/brand/brand-4.png";
-import b_5 from "@/assets/img/inner-about/brand/brand-5.png";
+import { brandLogos } from "@/data/brand";
 
-// brand images
-const brand_images = [b_1, b_2, b_3, b_4, b_5, b_6];
+const brandList = [...brandLogos, brandLogos[1]];
 
 export default function BrandFive() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const swiperRef = useRef<any>(null);
   return (
-    <div
-      className="ab-brand-area pt-120 pb-120 black-bg-2"
-      style={{
-        backgroundImage:
-          "url(/assets/img/inner-about/brand/brand-bg-shape.png)",
-      }}
-    >
+    <div className="ab-brand-area pt-120 pb-120 black-bg-2">
       <div className="container">
         <div className="row">
           <div className="col-xl-12">
@@ -48,9 +33,15 @@ export default function BrandFive() {
             <div className="ab-brand-wrapper mb-80">
               <div className="swiper-container ab-brand-slide-active">
                 <Marquee speed={100} loop={0} className="ab-brand-slide-wrap">
-                  {brand_images.map((b, i) => (
+                  {brandList.map((b, i) => (
                     <div key={i} className="ab-brand-item">
-                      <Image src={b} alt="brand" />
+                      <Image
+                        src={b.image}
+                        alt={b.alt}
+                        width={220}
+                        height={50}
+                        className="nt-object-contain"
+                      />
                     </div>
                   ))}
                 </Marquee>

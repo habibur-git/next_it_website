@@ -40,37 +40,20 @@ const AboutUsMain = () => {
 
   return (
     <Wrapper>
-      {/* header area start */}
       <Header />
-      {/* header area end */}
 
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <main>
-            {/* about hero */}
             <AboutUsHero />
-            {/* about hero */}
-
-            {/* about area */}
             <AboutUsArea />
-            {/* about area */}
-
-            {/* team area */}
             <Team />
-
-            {/* fun fact area */}
             <FunFactOne />
-            {/* fun fact area */}
-
-            {/* brand area */}
             <BrandFive />
-            {/* brand area */}
             <Faq data="aboutus" />
           </main>
 
-          {/* footer area */}
           <Footer />
-          {/* footer area */}
         </div>
       </div>
     </Wrapper>
