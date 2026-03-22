@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import useSWR from "swr";
 import { useState } from "react";
 import { UpArrow } from "../svg";
+import { IPortfolio } from "@/types/custom-d-t";
 
 const cardVariants = {
   rest: {},
@@ -74,13 +76,33 @@ const categories = [
 ];
 
 export default function PortfolioGrid() {
+  const { data: portfolio = [], isLoading } = useSWR<IPortfolio[]>(`/api/portfolio`, {
+    fallbackData: [],
+  });
+
   const [activeFilter, setActiveFilter] = useState<string>("ALL");
 
   // filtering
   const filteredProjects =
     activeFilter === "ALL"
-      ? portfolio_data
-      : portfolio_data.filter((item) => item.category === activeFilter);
+      ? portfolio
+      : portfolio.filter((item) => item.category === activeFilter);
+
+
+  // get unique categories
+  const portfolioCategories = [
+    "ALL",
+    ...Array.from(new Set(portfolio.map((item) => item.category))),
+  ];
+
+  console.log(portfolio)
+
+
+
+
+  if (isLoading) {
+    return "loading..."
+  }
 
   return (
     <div className="nt-space">
@@ -94,18 +116,17 @@ export default function PortfolioGrid() {
           {/* Filters */}
           <div className="nt-col-span-7 nt-flex nt-justify-end">
             <div className="nt-inline-flex nt-rounded-xl nt-bg-white/5 nt-p-1 nt-border nt-border-white/10">
-              {categories.map((cat) => {
+              {portfolioCategories?.map((cat) => {
                 const isActive = activeFilter === cat;
 
                 return (
                   <button
                     key={cat}
                     onClick={() => setActiveFilter(cat)}
-                    className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all ${
-                      isActive
-                        ? "nt-bg-white nt-text-body nt-shadow-sm"
-                        : "nt-text-white/70 hover:nt-text-white"
-                    }`}
+                    className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all ${isActive
+                      ? "nt-bg-white nt-text-body nt-shadow-sm"
+                      : "nt-text-white/70 hover:nt-text-white"
+                      }`}
                   >
                     {cat}
                   </button>
@@ -117,16 +138,16 @@ export default function PortfolioGrid() {
 
         {/* Grid */}
         <div className="nt-grid nt-grid-cols-1 md:nt-grid-cols-2 nt-gap-8">
-          {filteredProjects.map((item) => (
+          {filteredProjects?.map((item) => (
             <motion.div
-              key={item.id}
+              key={item._id}
               className="nt-relative nt-w-full nt-h-[500px] lg:nt-h-[660px] nt-overflow-hidden"
               variants={cardVariants}
               initial="rest"
               whileHover="hover"
             >
               <Link
-                href="/portfolio/portfolio-details"
+                href={`/portfolio/portfolio-details/${item._id}`}
                 className="nt-block nt-w-full nt-h-full nt-relative"
               >
                 <motion.div
@@ -135,11 +156,11 @@ export default function PortfolioGrid() {
                   transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                   <Image
-                    src={item.img}
+                    src={item.bannerImage}
                     alt={item.title}
                     width={800}
                     height={660}
-                    className="nt-w-full nt-h-full nt-object-cover"
+                    className="nt-aspect-square nt-w-full nt-h-full nt-object-cover"
                   />
                 </motion.div>
 
@@ -154,7 +175,7 @@ export default function PortfolioGrid() {
                       {item.title}
                     </h4>
                     <span className="nt-text-white/80 nt-text-sm">
-                      {item.category} · {item.year}
+                      {item.category} · {item.projectDate}
                     </span>
                   </div>
                 </motion.div>

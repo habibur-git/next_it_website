@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const BlogDetailsPage = () => {
   return (
-    <BlogDetailsMain id={1} />
+    <BlogDetailsMain id={"1"} />
   );
 };
 

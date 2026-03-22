@@ -17,14 +17,3 @@ export interface IBlogDT {
   blogHeroSlider?: boolean;
   desc?: string;
 }
-
-export interface Blog {
-  _id: string;
-  title: string;
-  slug: string;
-  content: string;
-  coverImage: string;
-  published: boolean;
-  category: string;
-  createdAt: string;
-}

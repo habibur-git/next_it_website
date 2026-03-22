@@ -10,7 +10,7 @@ import BigText from "@/components/big-text";
 import FooterTwo from "@/components/layout/footer/Footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
-import FaqArea from "@/components/faq/faq-area";
+// import FaqArea from "@/components/faq/faq-area";
 import Header from "@/components/layout/header/Header";
 import { charAnimation, titleAnimation } from "@/utils/title-animation";
 
@@ -65,7 +65,7 @@ const FaqMain = () => {
               {/* faq hero */}
 
               {/* faq area */}
-              <FaqArea />
+              {/* <FaqArea /> */}
               {/* faq area */}
 
               {/* big text */}

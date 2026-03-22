@@ -17,7 +17,7 @@ export default async function BlogDetailsPage(props: PageParamsProps) {
     const { id } = resolvedParams;
 
     return (
-        <BlogDetailsMain id={id} />
+        <BlogDetailsMain id={id as string} />
     );
 }
 

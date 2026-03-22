@@ -17,8 +17,14 @@ import Faq from "@/components/faq/Faq";
 import Header from "@/components/layout/header/Header";
 import { servicePanel } from "@/utils/panel-animation";
 import { charAnimation, fadeAnimation } from "@/utils/title-animation";
+import useSWR from "swr";
+import { IService } from "@/types/custom-d-t";
 
 const ServiceMain = () => {
+  const { data: services = [], isLoading } = useSWR<IService[]>(`/api/services`, {
+    fallbackData: [],
+  });
+
   useScrollSmooth();
 
   useGSAP(() => {
@@ -28,7 +34,7 @@ const ServiceMain = () => {
       servicePanel();
     }, 100);
     return () => clearTimeout(timer);
-  });
+  }, [services]);
 
   return (
     <Wrapper>
@@ -66,7 +72,7 @@ const ServiceMain = () => {
             {/* service area */}
 
             {/* service area */}
-            <ServiceSix />
+            <ServiceSix services={services} />
             {/* service area */}
 
             {/* brand area */}

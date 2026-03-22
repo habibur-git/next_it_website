@@ -1,8 +1,9 @@
-import { Blog, IBlogDT } from "@/types/blog-d-t";
+import { IBlogDT } from "@/types/blog-d-t";
 import Link from "next/link";
 import moment from "moment";
+import { IBlog } from "@/types/custom-d-t";
 
-export default function BlogItem({ item }: { item: Blog }) {
+export default function BlogItem({ item }: { item: IBlog }) {
   return (
     <div className="tp-blog-item">
       <div className="tp-blog-thumb fix p-relative">
@@ -12,8 +13,8 @@ export default function BlogItem({ item }: { item: Blog }) {
         </div>
       </div>
       <div className="tp-blog-content">
-        {/* <span>{item.category || ""}</span> */}
-        <span>Branding / Creative</span>
+        <span>{item.categories.join(" / ",) || ""}</span>
+        {/* <span>Branding / Creative</span> */}
         <h4 className="tp-blog-title-sm">
           <Link href={`/blog-details/${item._id}`}>{item.title}</Link>
         </h4>

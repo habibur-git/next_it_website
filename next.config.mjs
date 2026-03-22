@@ -1,24 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     async rewrites() {
-        const apiUrl = process.env.API_URL;
-        if (!apiUrl || !apiUrl.startsWith('http')) {
-            return [];
-        }
         return [
             {
                 source: '/api/:path*',
-                destination: `${apiUrl}/:path*`,
+                destination: `${process.env.API_URL}/:path*`,
             },
         ];
     },
     images: {
         remotePatterns: [
             {
-                protocol: 'https',
-                hostname: 'res.cloudinary.com',
-                port: '',
-                pathname: '/**',
+                protocol: "https",
+                hostname: "res.cloudinary.com",
+                pathname: "/**",
+            },
+            {
+                protocol: "https",
+                hostname: "images.unsplash.com",
+                pathname: "/**",
             },
             {
                 protocol: 'https',

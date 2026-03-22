@@ -4,10 +4,11 @@ import Image from "next/image";
 import { blog_modern } from "@/data/blog-data";
 import usePagination from "@/hooks/use-pagination";
 import Pagination from "../ui/pagination";
-import { Blog, IBlogDT } from "@/types/blog-d-t";
+import { IBlogDT } from "@/types/blog-d-t";
 import BlogItem from "./blog-item/blog-item";
 import useSWR from "swr";
 import moment from "moment";
+import { IBlog } from "@/types/custom-d-t";
 
 export default function BlogModern() {
   const { data: blogs, isLoading } = useSWR("/api/blogs", {
@@ -19,9 +20,9 @@ export default function BlogModern() {
   // const other_blogs = blog_items.filter((b) => b !== first_blog);
   // const { currentItems, handlePageClick, pageCount } = usePagination<IBlogDT>(other_blogs, 6);
 
-  const first_blog: Blog | null = blogs.length > 0 ? blogs[0] : null;
-  const other_blogs: Blog[] = blogs.length > 1 ? blogs.slice(1) : [];
-  const { currentItems, handlePageClick, pageCount } = usePagination<Blog>(other_blogs, 6);
+  const first_blog: IBlog | null = blogs.length > 0 ? blogs[0] : null;
+  const other_blogs: IBlog[] = blogs.length > 1 ? blogs.slice(1) : [];
+  const { currentItems, handlePageClick, pageCount } = usePagination<IBlog>(other_blogs, 6);
 
   return (
     <>
@@ -56,7 +57,7 @@ export default function BlogModern() {
       <div className="blog-details-realated-area pt-120 pb-70">
         <div className="container">
           <div className="row">
-            {currentItems.map((item: Blog) => (
+            {currentItems.map((item: IBlog) => (
               <div key={item._id} className="col-xl-4 col-lg-6 col-md-6 mb-50">
                 <BlogItem item={item} />
               </div>
