@@ -85,7 +85,7 @@ export default function Testimonials() {
                         alt={item.name}
                         width={64}
                         height={64}
-                        className="nt-rounded-full nt-w-14 nt-h-14 md:nt-w-16 md:nt-h-16 nt-object-cover"
+                        className="nt-rounded-full nt-min-w-14 nt-min-h-14 md:nt-min-w-16 md:nt-min-h-16 nt-object-cover"
                       />
                       <div className="nt-w-full">
                         <h5 className="nt-text-base nt-text-white nt-font-semibold">
@@ -98,7 +98,7 @@ export default function Testimonials() {
                     </div>
                     <div className="nt-flex nt-items-center nt-justify-center nt-min-w-12 nt-min-h-12 bg-bg nt-rounded-full">
                       <span
-                        className="text-h4"
+                        className="nt-text-h4"
                         role="img"
                         aria-label="country flag"
                       >
