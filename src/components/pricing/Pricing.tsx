@@ -13,6 +13,15 @@ const CATEGORIES = [
 
 type CategoryId = (typeof CATEGORIES)[number]["id"];
 
+// ✅ K format function
+const formatToK = (price: number) => {
+  if (price >= 1000) {
+    const value = price / 1000;
+    return `৳${value % 1 === 0 ? value : value.toFixed(1)}k`;
+  }
+  return `৳${price}`;
+};
+
 const FEATURES_BY_CATEGORY: Record<CategoryId, string[]> = {
   socialMedia: [
     "Page Post & Caption Writing",
@@ -131,7 +140,6 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "social-startup",
       name: "Startup Package",
       monthlyPrice: 2200,
-      priceLabel: " ৳ 2,200",
       plan: "Monthly",
       description: "8 posts, 2 per week, caption writing & premium assets.",
       included: [0, 1, 2, 3, 4],
@@ -143,7 +151,6 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       name: "Business Package",
       badge: "Recommended",
       monthlyPrice: 3999,
-      priceLabel: " ৳ 3,999",
       plan: "Monthly",
       description: "16 posts, 4 per week, 3 revisions & free page cover.",
       included: [0, 1, 5, 6, 7, 8],
@@ -154,7 +161,6 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "social-corporate",
       name: "Corporate Package",
       monthlyPrice: 6599,
-      priceLabel: " ৳ 6,599",
       plan: "Monthly",
       description: "30 posts, 7 per week, 4 revisions & free page cover.",
       included: [0, 1, 9, 10, 11, 8],
@@ -166,7 +172,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
     {
       id: "website-basic",
       name: "Basic Package",
-      priceLabel: "৳15,000 – ৳25,000",
+      priceLabel: "৳15k–25k",
       description:
         "Perfect for startups and small businesses. 3–5 pages, responsive, WordPress.",
       included: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -177,7 +183,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "website-standard",
       name: "Standard Package",
       badge: "Recommended",
-      priceLabel: "৳30,000 – ৳50,000",
+      priceLabel: "৳30k–50k",
       description:
         "Ideal for growing businesses. 6–10 pages, premium theme, speed & SEO.",
       included: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
@@ -187,7 +193,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
     {
       id: "website-premium",
       name: "Premium Package",
-      priceLabel: "৳60,000 – ৳120,000+",
+      priceLabel: "৳60k–120k+",
       description:
         "Advanced features & e-commerce. Custom UI/UX, payment gateway, 1 month support.",
       included: [19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
@@ -200,9 +206,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "ecom-starter",
       name: "Starter Business Setup",
       monthlyPrice: 1950,
-      priceLabel: "৳ 1,950 ",
-      description:
-        "Facebook page, logo, cover, 2 promo posts, business info, Google Maps, SEO, social accounts.",
+      description: "Basic business launch setup.",
       included: [0, 1, 2, 3, 4, 5, 6, 7, 8],
       cta: "Get started",
       emphasized: false,
@@ -212,9 +216,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       name: "E-Commerce Business Setup",
       badge: "Popular",
       monthlyPrice: 8999,
-      priceLabel: "৳ 8,999 ",
-      description:
-        "Starter features + e-commerce landing, 5 products, mobile friendly, order system.",
+      description: "E-commerce landing + product system.",
       included: [0, 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13],
       cta: "Get started",
       emphasized: true,
@@ -223,9 +225,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "ecom-premium",
       name: "Premium Brand & E-Commerce Setup",
       monthlyPrice: 19999,
-      priceLabel: "৳ 19,999 ",
-      description:
-        "Full digital launch: logo, packaging, social pages, full e-commerce site, unlimited products.",
+      description: "Full online store + branding.",
       included: [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
       cta: "Contact us",
       emphasized: false,
@@ -236,9 +236,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "branding-starter",
       name: "Starter Branding",
       monthlyPrice: 2999,
-      priceLabel: "৳ 2,999 ",
-      description:
-        "Logo, Facebook cover, profile image, colors & basic brand guidance.",
+      description: "Basic branding setup.",
       included: [0, 1, 2, 3, 4, 5],
       cta: "Get started",
       emphasized: false,
@@ -248,9 +246,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       name: "Business Branding",
       badge: "Recommended",
       monthlyPrice: 7999,
-      priceLabel: "৳ 7,999 ",
-      description:
-        "Logo + variations, cover, social branding, palette, typography, 2 promo posts.",
+      description: "Professional branding kit.",
       included: [0, 6, 1, 7, 8, 9, 10, 11, 12],
       cta: "Get started",
       emphasized: true,
@@ -259,9 +255,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "branding-premium",
       name: "Premium Brand Identity",
       monthlyPrice: 14999,
-      priceLabel: "৳ 14,999 ",
-      description:
-        "Multiple logo concepts, full style guide, packaging, business card, letterhead, 10-page profile.",
+      description: "Full brand identity system.",
       included: [0, 13, 14, 15, 16, 17, 18, 19, 20, 21],
       cta: "Contact us",
       emphasized: false,
@@ -277,27 +271,24 @@ export default function Pricing() {
   return (
     <section className="nt-pt-12 nt-pb-0 md:nt-pb-24 lg:nt-pb-24">
       <div className="nt-container nt-mx-auto nt-px-4">
-        <div className="nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-mb-16">
-          {/* Minimal header */}
+        <div className="nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-mb-16">
           <div className="nt-col-span-5">
             <h2 className="nt-text-h2 nt-text-white">Pricing</h2>
-            <p className="nt-text-grey-muted nt-text-small nt-mt-2 nt-mb-0">
+            <p className="nt-text-grey-muted nt-text-small nt-mt-2">
               Choose your service and plan.
             </p>
           </div>
 
-          {/* SaaS-style segment control: minimal, premium feel */}
           <div className="nt-col-span-7 nt-flex nt-justify-end">
             <div className="nt-inline-flex nt-rounded-xl nt-bg-white/5 nt-p-1 nt-border nt-border-white/10">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
-                  type="button"
                   onClick={() => setCategory(cat.id)}
-                  className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-duration-200 ${
+                  className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small ${
                     category === cat.id
-                      ? "nt-bg-white nt-text-body nt-shadow-sm"
-                      : "nt-text-white/70 hover:nt-text-white"
+                      ? "nt-bg-white nt-text-body"
+                      : "nt-text-white/70"
                   }`}
                 >
                   {cat.label}
@@ -307,63 +298,27 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Three tiers: minimal premium cards */}
-        <div className="nt-grid md:nt-grid-cols-3 nt-gap-5 md:nt-gap-6">
+        <div className="nt-grid md:nt-grid-cols-3 nt-gap-6">
           {plans.map((plan) => (
-            <div
-              key={plan.id}
-              className={`nt-relative nt-flex nt-flex-col nt-rounded-2xl nt-border nt-bg-white/5 nt-backdrop-blur-sm nt-transition-all nt-duration-200 ${
-                plan.emphasized
-                  ? "nt-border-theme/40 nt-shadow-lg nt-shadow-theme/5"
-                  : "nt-border-white/10 hover:nt-border-white/15"
-              }`}
-            >
-              <div className="nt-flex nt-flex-col nt-flex-1 nt-p-6 md:nt-p-7">
-                {plan.badge && (
-                  <span className="nt-text-xs nt-font-medium nt-text-theme nt-mb-3 nt-block ">
-                    {plan.badge}
-                  </span>
+            <div key={plan.id} className="nt-p-6 nt-rounded-2xl nt-bg-white/5">
+              <h4 className="nt-text-white">{plan.name}</h4>
+
+              <h3 className="nt-text-[36px] nt-font-bold nt-my-4 nt-text-theme">
+                {plan.priceLabel ||
+                  (plan.monthlyPrice && formatToK(plan.monthlyPrice))}
+              </h3>
+
+              <ul className="nt-space-y-2 nt-mb-8">
+                {features.map((f, i) =>
+                  plan.included.includes(i) ? (
+                    <li key={i} className="nt-flex nt-gap-2 nt-text-white/70">
+                      <RiCheckLine /> {f}
+                    </li>
+                  ) : null,
                 )}
-                <h4 className="nt-font-title nt-text-white nt-font-semibold">
-                  {plan.name}
-                </h4>
+              </ul>
 
-                <div className="nt-mt-6 nt-flex nt-items-baseline nt-gap-1 nt-flex-wrap nt-gap-y-1">
-                  <span className="nt-font-title nt-text-white nt-text-[40px] nt-font-bold nt-tabular-nums nt-mb-8">
-                    {plan.priceLabel ??
-                      (plan.monthlyPrice != null
-                        ? `$${plan.monthlyPrice}`
-                        : "")}
-                  </span>
-                  {plan.priceLabel ? null : (
-                    <span className="nt-text-sm nt-text-white/50">
-                      / {plan.plan}
-                    </span>
-                  )}
-                </div>
-
-                <ul className="nt-mt-6 nt-space-y-3 nt-flex-1">
-                  {features.map((feature, i) =>
-                    plan.included.includes(i) ? (
-                      <li
-                        key={i}
-                        className="nt-flex nt-items-center nt-gap-2.5 nt-text-small nt-text-white/90"
-                      >
-                        <RiCheckLine className="nt-w-4 nt-h-4 nt-text-green-500 nt-shrink-0" />
-                        {feature}
-                      </li>
-                    ) : null,
-                  )}
-                </ul>
-
-                <Button
-                  label={plan.cta}
-                  href="/contact"
-                  variant={plan.emphasized ? "primary" : "secondary"}
-                  className="nt-mt-6 nt-w-full nt-py-3 nt-rounded-xl nt-text-small nt-justify-center"
-                  showArrow={plan.emphasized}
-                />
-              </div>
+              <Button label={plan.cta} href="/contact" />
             </div>
           ))}
         </div>
