@@ -88,16 +88,11 @@ export default function PortfolioGrid() {
       ? portfolio
       : portfolio.filter((item) => item.category === activeFilter);
 
-
   // get unique categories
   const portfolioCategories = [
     "ALL",
     ...Array.from(new Set(portfolio.map((item) => item.category))),
   ];
-
-  console.log(portfolio)
-
-
 
 
   if (isLoading) {
@@ -175,7 +170,14 @@ export default function PortfolioGrid() {
                       {item.title}
                     </h4>
                     <span className="nt-text-white/80 nt-text-sm">
-                      {item.category} · {item.projectDate}
+                      {item.category} · {" "}
+                      {
+                        new Date(item?.projectDate || new Date).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })
+                      }
                     </span>
                   </div>
                 </motion.div>
