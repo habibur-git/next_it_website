@@ -21,7 +21,7 @@ export default function Testimonials() {
       <div className="nt-container">
         {/* Header */}
         <div className="nt-flex nt-flex-col md:nt-flex-row md:nt-items-center md:nt-justify-between nt-gap-6 nt-mb-16">
-          <h2 className="nt-text-center md:nt-text-left text-white">
+          <h2 className="nt-text-h2 nt-text-white">
             What Our Clients Say About Us
           </h2>
 
@@ -73,7 +73,7 @@ export default function Testimonials() {
                 <div className="nt-flex nt-flex-col nt-justify-between nt-min-h-[280px] md:nt-min-h-[350px]">
                   <div>
                     <RiDoubleQuotesL className="nt-mb-4 md:nt-mb-6 nt-text-[36px] text-desc" />
-                    <h4 className="nt-mb-6 nt-text-white md:nt-text-[24px] nt-font-normal">
+                    <h4 className="nt-mb-6 nt-text-white md:nt-text-[22px] nt-font-normal">
                       {item.text}
                     </h4>
                   </div>

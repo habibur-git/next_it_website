@@ -1,12 +1,16 @@
 "use client";
 
+import { IPortfolio } from "@/types/custom-d-t";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
-import { useState } from "react";
 import { UpArrow } from "../svg";
-import { IPortfolio } from "@/types/custom-d-t";
+
+type PortfolioGridProps = {
+  variant?: "one" | "two";
+};
 
 const cardVariants = {
   rest: {},
@@ -75,12 +79,18 @@ const categories = [
   ...Array.from(new Set(portfolio_data.map((item) => item.category))),
 ];
 
-export default function PortfolioGrid() {
-  const { data: portfolio = [], isLoading } = useSWR<IPortfolio[]>(`/api/portfolio`, {
-    fallbackData: [],
-  });
+export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
+  const { data: portfolio = [], isLoading } = useSWR<IPortfolio[]>(
+    `/api/portfolio`,
+    {
+      fallbackData: [],
+    },
+  );
 
   const [activeFilter, setActiveFilter] = useState<string>("ALL");
+  const isVariantTwo = variant === "two";
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const [showFloatingFilters, setShowFloatingFilters] = useState(false);
 
   // filtering
   const filteredProjects =
@@ -94,23 +104,85 @@ export default function PortfolioGrid() {
     ...Array.from(new Set(portfolio.map((item) => item.category))),
   ];
 
+  useEffect(() => {
+    if (!isVariantTwo) return;
+
+    const handleVisibility = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      // Show only in the middle "active" window of this section.
+      // Hide a bit earlier near section end so it doesn't overlap footer/next sections.
+      const isInView =
+        rect.top < viewportHeight - 120 && rect.bottom > viewportHeight + 120;
+      setShowFloatingFilters(isInView);
+    };
+
+    handleVisibility();
+    window.addEventListener("scroll", handleVisibility, { passive: true });
+    window.addEventListener("resize", handleVisibility);
+    return () => {
+      window.removeEventListener("scroll", handleVisibility);
+      window.removeEventListener("resize", handleVisibility);
+    };
+  }, [isVariantTwo]);
 
   if (isLoading) {
-    return "loading..."
+    return "loading...";
   }
 
   return (
-    <div className="nt-space">
+    <div
+      ref={sectionRef}
+      className={`nt-space nt-position ${isVariantTwo ? "nt-pb-24" : ""}`}
+    >
       <div className="nt-container">
         {/* Header */}
-        <div className="nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-mb-16">
-          <div className="nt-col-span-5">
-            <h2 className="nt-text-h2 nt-text-white">Our Projects</h2>
-          </div>
+        <div
+          className={`nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-relative ${
+            isVariantTwo ? "nt-mb-0" : "nt-mb-16"
+          }`}
+        >
+          {!isVariantTwo && (
+            <div className="nt-col-span-5">
+              <h2 className="nt-text-h2 nt-text-white">Our Projects</h2>
+            </div>
+          )}
 
           {/* Filters */}
-          <div className="nt-col-span-7 nt-flex nt-justify-end">
-            <div className="nt-inline-flex nt-rounded-xl nt-bg-white/5 nt-p-1 nt-border nt-border-white/10">
+          {!isVariantTwo && (
+            <div className="nt-col-span-7 nt-flex nt-justify-end">
+              <div className="nt-inline-flex nt-rounded-xl nt-bg-white/5 nt-p-1 nt-border nt-border-white/10">
+                {portfolioCategories?.map((cat) => {
+                  const isActive = activeFilter === cat;
+
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setActiveFilter(cat)}
+                      className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-whitespace-nowrap ${
+                        isActive
+                          ? "nt-bg-white nt-text-body nt-shadow-sm"
+                          : "nt-text-white/70 hover:nt-text-white"
+                      }`}
+                    >
+                      {cat}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Sticky Filters (variant two) */}
+        {isVariantTwo && showFloatingFilters && (
+          <div className="nt-fixed nt-bottom-6 nt-left-1/2 -nt-translate-x-1/2 nt-z-40 nt-flex nt-justify-center nt-px-3">
+            <div
+              className="nt-inline-flex nt-max-w-full nt-gap-1 nt-flex-wrap sm:nt-flex-nowrap nt-justify-center nt-rounded-xl nt-bg-black/70 nt-backdrop-blur-md nt-p-1.5 nt-border nt-border-white/15"
+            >
               {portfolioCategories?.map((cat) => {
                 const isActive = activeFilter === cat;
 
@@ -118,10 +190,11 @@ export default function PortfolioGrid() {
                   <button
                     key={cat}
                     onClick={() => setActiveFilter(cat)}
-                    className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all ${isActive
-                      ? "nt-bg-white nt-text-body nt-shadow-sm"
-                      : "nt-text-white/70 hover:nt-text-white"
-                      }`}
+                    className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-whitespace-nowrap ${
+                      isActive
+                        ? "nt-bg-white nt-text-body nt-shadow-sm"
+                        : "nt-text-white/70 hover:nt-text-white"
+                    }`}
                   >
                     {cat}
                   </button>
@@ -129,7 +202,7 @@ export default function PortfolioGrid() {
               })}
             </div>
           </div>
-        </div>
+        )}
 
         {/* Grid */}
         <div className="nt-grid nt-grid-cols-1 md:nt-grid-cols-2 nt-gap-8">
@@ -170,14 +243,14 @@ export default function PortfolioGrid() {
                       {item.title}
                     </h4>
                     <span className="nt-text-white/80 nt-text-sm">
-                      {item.category} · {" "}
-                      {
-                        new Date(item?.projectDate || new Date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })
-                      }
+                      {item.category} ·{" "}
+                      {new Date(
+                        item?.projectDate || new Date(),
+                      ).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
                     </span>
                   </div>
                 </motion.div>
@@ -187,20 +260,22 @@ export default function PortfolioGrid() {
         </div>
 
         {/* Button */}
-        <div className="nt-mt-16 nt-flex nt-justify-center">
-          <Link
-            className="tp-btn-circle style-2"
-            href="/portfolio-grid-col-4-fullwidth"
-          >
-            <span className="tp-btn-circle-text">
-              More <br /> Projects
-            </span>
+        {!isVariantTwo && (
+          <div className="nt-mt-16 nt-flex nt-justify-center">
+            <Link
+              className="nt-inline-flex nt-w-[140px] nt-h-[140px] nt-shrink-0 nt-rounded-full nt-items-center nt-justify-center nt-bg-transparent nt-text-black nt-ring-1 nt-ring-inset nt-ring-white/60  hover:nt-ring-theme nt-group"
+              href="/portfolio"
+            >
+              <span className="nt-text-white/60 group-hover:nt-text-theme">
+                More <br /> Projects
+              </span>
 
-            <span className="tp-btn-circle-icon">
-              <UpArrow />
-            </span>
-          </Link>
-        </div>
+              <span className="nt-text-white/60 nt-w-4 nt-h-4 nt-ml-3 nt-mt-3 group-hover:nt-text-theme">
+                <UpArrow />
+              </span>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

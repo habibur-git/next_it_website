@@ -6,24 +6,27 @@ import { gsap } from "gsap";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import { BrandItems } from "@/components/brand/brand-two";
+import FooterTwo from "@/components/layout/footer/Footer";
 import ServiceHero from "@/components/service/service-hero";
 import ServiceSix from "@/components/service/service-six";
 import { Leaf } from "@/components/svg";
-import FooterTwo from "@/components/layout/footer/Footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
+import BrandSlider from "@/components/brand/brand-slider";
 import Faq from "@/components/faq/Faq";
 import Header from "@/components/layout/header/Header";
+import { IService } from "@/types/custom-d-t";
 import { servicePanel } from "@/utils/panel-animation";
 import { charAnimation, fadeAnimation } from "@/utils/title-animation";
 import useSWR from "swr";
-import { IService } from "@/types/custom-d-t";
 
 const ServiceMain = () => {
-  const { data: services = [], isLoading } = useSWR<IService[]>(`/api/services`, {
-    fallbackData: [],
-  });
+  const { data: services = [], isLoading } = useSWR<IService[]>(
+    `/api/services`,
+    {
+      fallbackData: [],
+    },
+  );
 
   useScrollSmooth();
 
@@ -79,7 +82,7 @@ const ServiceMain = () => {
             <div className="tp-brand-4-area pt-120 pb-120">
               <div className="container">
                 <div className="row gx-0">
-                  <BrandItems />
+                  <BrandSlider />
                 </div>
               </div>
             </div>

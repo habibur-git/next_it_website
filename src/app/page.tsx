@@ -1,14 +1,8 @@
 "use client";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
-import {
-  ScrollSmoother,
-  ScrollTrigger,
-  SplitText,
-  cursorAnimation,
-} from "@/plugins";
+import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
-import { useEffect } from "react";
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
@@ -40,21 +34,6 @@ import { videoAnimOne } from "@/utils/video-anim";
 
 const HomeMain = () => {
   useScrollSmooth();
-  useEffect(() => {
-    document.body.classList.add("tp-magic-cursor");
-    return () => {
-      document.body.classList.remove("tp-magic-cursor");
-    };
-  }, []);
-
-  useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      document.querySelector(".tp-magic-cursor")
-    ) {
-      cursorAnimation();
-    }
-  }, []);
 
   useGSAP(() => {
     const timer = setTimeout(() => {
@@ -82,11 +61,6 @@ const HomeMain = () => {
 
   return (
     <Wrapper showBackToTop={false}>
-      {/* magic cursor start */}
-      <div id="magic-cursor">
-        <div id="ball"></div>
-      </div>
-
       <Header />
 
       <div id="smooth-wrapper">

@@ -1,115 +1,42 @@
 "use client";
-import useScrollSmooth from "@/hooks/use-scroll-smooth";
-import {
-  ScrollSmoother,
-  ScrollTrigger,
-  SplitText,
-  cursorAnimation,
-} from "@/plugins";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { useEffect } from "react";
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import BigText from "@/components/big-text";
-import PortfolioGridColTwoArea from "@/components/portfolio/PortfolioGrid";
 import FooterTwo from "@/components/layout/footer/Footer";
-import Wrapper from "@/layouts/wrapper";
+import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
 // animation
 import Header from "@/components/layout/header/Header";
-import { hoverBtn } from "@/utils/hover-btn";
-import {
-  charAnimation,
-  fadeAnimation,
-  titleAnimation,
-  zoomAnimation,
-} from "@/utils/title-animation";
 
 const Page = () => {
-  useScrollSmooth();
-
-  useEffect(() => {
-    document.body.classList.add("tp-magic-cursor");
-    return () => {
-      document.body.classList.remove("tp-magic-cursor");
-    };
-  }, []);
-
-  useEffect(() => {
-    if (
-      typeof window !== "undefined" &&
-      document.querySelector(".tp-magic-cursor")
-    ) {
-      cursorAnimation();
-    }
-  }, []);
-
-  useGSAP(() => {
-    const timer = setTimeout(() => {
-      charAnimation();
-      titleAnimation();
-      hoverBtn();
-      zoomAnimation();
-      fadeAnimation();
-    }, 100);
-    return () => clearTimeout(timer);
-  });
-
   return (
-    <Wrapper>
-      {/* magic cursor start */}
-      <div id="magic-cursor">
-        <div id="ball"></div>
-      </div>
-      {/* magic cursor end */}
-
-      {/* header area start */}
+    <>
       <Header />
-      {/* header area end */}
 
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <main>
-            {/* portfolio hero */}
-            <div className="tm-hero-area tm-hero-ptb">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-12">
-                    <div className="tm-hero-content">
-                      <span className="tm-hero-subtitle">Liko Studio</span>
-                      <h4 className="tm-hero-title fs-220 tp-char-animation">
-                        Classic Grid
-                      </h4>
-                    </div>
-                    <div className="tm-hero-text tp_title_anim">
-                      <p>
-                        We’re a diverse team that works as fancies attention to
-                        details, enjoys beers on Friday nights and aspires to
-                        design the dent in the universe.
-                      </p>
-                    </div>
-                  </div>
+      <main>
+        <div className="tm-hero-area  nt-pb-0 nt-pt-56">
+          <div className="container">
+            <div className="row">
+              <div className="col-xl-12">
+                <div className="tm-hero-content">
+                  <span className="tm-hero-subtitle">Liko Studio</span>
+                  <h4 className="tm-hero-title fs-220 tp-char-animation">
+                    Classic Grid
+                  </h4>
+                </div>
+                <div className="tm-hero-text tp_title_anim">
+                  <p>
+                    We’re a diverse team that works as fancies attention to
+                    details, enjoys beers on Friday nights and aspires to design
+                    the dent in the universe.
+                  </p>
                 </div>
               </div>
             </div>
-            {/* portfolio hero */}
-
-            {/* portfolio area */}
-            <PortfolioGridColTwoArea />
-            {/* portfolio area */}
-
-            {/* big text */}
-            <BigText />
-            {/* big text */}
-          </main>
-
-          {/* footer area */}
-          <FooterTwo />
-          {/* footer area */}
+          </div>
         </div>
-      </div>
-    </Wrapper>
+        <PortfolioGrid variant="two" />
+      </main>
+      <FooterTwo />
+    </>
   );
 };
 

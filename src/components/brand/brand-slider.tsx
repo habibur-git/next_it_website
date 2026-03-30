@@ -10,11 +10,11 @@ export default function BrandSlider() {
     <div className="tp-brand-slider-active fix">
       <Marquee speed={100} loop={0} className="brand-wrapper">
         {brandList.map((b, i) => (
-          <div key={i} style={{ height: "auto", width: "180px" }}>
+          <div key={i} style={{ height: "auto", width: "320px" }}>
             <Image
               src={b.image}
               alt={b.alt}
-              width={180}
+              width={200}
               height={80}
               className="nt-object-contain"
             />

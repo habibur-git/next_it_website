@@ -6,19 +6,14 @@ import { gsap } from "gsap";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import BlogDetailsArea from "@/components/blog/details/blog-details-area";
-import BlogDetailsBreadcrumb from "@/components/blog/details/blog-details-breadcrumb";
-import BlogDetailsRelatedPosts from "@/components/blog/details/blog-details-related-posts";
 // import FooterTwo from "@/layouts/footers/footer";
 import Wrapper from "@/layouts/wrapper";
 // animation
-import Header from "@/components/layout/header/Header";
-import { IBlog, IdProps } from "@/types/custom-d-t";
-import { charAnimation } from "@/utils/title-animation";
-import { Render } from "@puckeditor/core";
-import { config } from "@/utils/puck-config";
-import useSWR from "swr";
 import EditorPreview from "@/components/blog/editor-preview";
+import Header from "@/components/layout/header/Header";
+import { IBlog } from "@/types/custom-d-t";
+import { charAnimation } from "@/utils/title-animation";
+import useSWR from "swr";
 
 interface BlogDetailsMainProps {
   id: string;
@@ -39,12 +34,12 @@ export default function BlogDetailsMain({ id }: BlogDetailsMainProps) {
   });
 
   if (isLoading) {
-    return "loading..."
+    return "loading...";
   } else if (!isLoading && Object.values(blog).length === 0) {
     return "Not found";
   }
 
-  const { content = "" } = blog as IBlog || {}
+  const { content = "" } = (blog as IBlog) || {};
 
   return (
     <Wrapper>
