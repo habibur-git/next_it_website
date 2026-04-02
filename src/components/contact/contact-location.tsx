@@ -17,7 +17,7 @@ const location_data = [
     address:
       "H/1, Road-6, Duaripara Bazar, <br /> Rupnagar, Mirpur, Dhaka-1216",
     phone: "(+880) 1690274952",
-    email: "contact@devionex.com",
+    email: "info@nextit.agency",
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ const location_data = [
     location_title: "Malaysia Office",
     address: "Seri Kembangan, Selangor, <br /> Malaysia 43300",
     phone: "(+880) 1690274952",
-    email: "contact@devionex.com",
+    email: "info@nextit.agency",
   },
   {
     id: 3,
@@ -38,7 +38,7 @@ const location_data = [
     address:
       "Al-Mubarakah: Fahad Al-Basman Heritage Complex, <br /> Ground Floor, Shop No. 16",
     phone: "(+880) 1690274952",
-    email: "contact@devionex.com",
+    email: "info@nextit.agency",
   },
 ];
 

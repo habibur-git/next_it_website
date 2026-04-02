@@ -34,8 +34,8 @@ export const links: Record<string, LinkItem[]> = {
     { id: 1000, href: "tel:+8801690274952", text: "+8801690274952" },
     {
       id: 1001,
-      href: "mailto:contact@devionex.com",
-      text: "contact@devionex.com",
+      href: "mailto:info@nextit.agency",
+      text: "info@nextit.agency",
     },
   ],
 };

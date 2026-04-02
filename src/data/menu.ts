@@ -15,7 +15,7 @@ export const menuItems: MenuItem[] = [
   { id: 3, title: "Services", link: "/service" },
   { id: 4, title: "Portfolio", link: "/portfolio" },
   { id: 5, title: "Blog", link: "/blog" },
-  { id: 6, title: "Contact", link: "/contact" },
+  // { id: 6, title: "Contact", link: "/contact" },
 ];
 
 export const contactInfo = {

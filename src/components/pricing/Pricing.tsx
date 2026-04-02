@@ -13,15 +13,6 @@ const CATEGORIES = [
 
 type CategoryId = (typeof CATEGORIES)[number]["id"];
 
-// ✅ K format function
-const formatToK = (price: number) => {
-  if (price >= 1000) {
-    const value = price / 1000;
-    return `৳${value % 1 === 0 ? value : value.toFixed(1)}k`;
-  }
-  return `৳${price}`;
-};
-
 const FEATURES_BY_CATEGORY: Record<CategoryId, string[]> = {
   socialMedia: [
     "Page Post & Caption Writing",
@@ -172,7 +163,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
     {
       id: "website-basic",
       name: "Basic Package",
-      priceLabel: "৳15k–25k",
+      priceLabel: "15k–25k",
       description:
         "Perfect for startups and small businesses. 3–5 pages, responsive, WordPress.",
       included: [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -183,7 +174,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
       id: "website-standard",
       name: "Standard Package",
       badge: "Recommended",
-      priceLabel: "৳30k–50k",
+      priceLabel: "30k–50k",
       description:
         "Ideal for growing businesses. 6–10 pages, premium theme, speed & SEO.",
       included: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
@@ -193,7 +184,7 @@ const PRICING_BY_CATEGORY: Record<CategoryId, Plan[]> = {
     {
       id: "website-premium",
       name: "Premium Package",
-      priceLabel: "৳60k–120k+",
+      priceLabel: "60k–120k+",
       description:
         "Advanced features & e-commerce. Custom UI/UX, payment gateway, 1 month support.",
       included: [19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
@@ -305,13 +296,14 @@ export default function Pricing() {
 
               <h3 className="nt-text-[36px] nt-font-bold nt-my-4 nt-text-theme">
                 {plan.priceLabel ||
-                  (plan.monthlyPrice && formatToK(plan.monthlyPrice))}
+                  (plan.monthlyPrice ? plan.monthlyPrice : "")}
+                <span className="nt-ml-2">/ Taka</span>
               </h3>
 
               <ul className="nt-space-y-2 nt-mb-8">
                 {features.map((f, i) =>
                   plan.included.includes(i) ? (
-                    <li key={i} className="nt-flex nt-gap-2 nt-text-white/70">
+                    <li key={i} className="nt-flex nt-gap-2 nt-text-white">
                       <RiCheckLine /> {f}
                     </li>
                   ) : null,
@@ -322,6 +314,9 @@ export default function Pricing() {
             </div>
           ))}
         </div>
+        <p className="nt-mt-5 nt-text-center">
+          <strong>Note:</strong> Prices are subject to change without notice.
+        </p>
       </div>
     </section>
   );

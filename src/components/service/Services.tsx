@@ -111,7 +111,7 @@ export default function Services() {
                   <span className="nt-block nt-text-h3 nt-text-title/50">
                     {service.number}
                   </span>
-                  <h2 className="nt-text-theme nt-mt-5">{service.title}</h2>
+                  <h2 className="nt-text-theme nt-mt-5 nt-text-[36px]">{service.title}</h2>
                   <p className="nt-text-white/80 nt-mt-4">
                     {service.description}
                   </p>
@@ -131,7 +131,7 @@ export default function Services() {
                 {/* Learn More – bottom-left */}
                 <div className="nt-relative nt-z-10 nt-w-full nt-max-w-2xl nt-mx-auto">
                   <Link
-                    href={`/services#${service.slug}`}
+                    href="/services"
                     className="nt-inline-flex nt-items-center nt-gap-3 nt-w-full nt-group/btn"
                   >
                     <span className="nt-text-white nt-font-medium">

@@ -1,15 +1,14 @@
-import React from "react";
-import { Metadata } from "next";
 import FaqMain from "@/pages/faq/faq-main";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Liko - Faq page",
+  title: "Next IT | Global Branding & Digital Solutions Agency",
+  description:
+    "Next IT: Your Global Digital Partner. Branding, web design & dev, video editing, and social media design. High-quality digital solutions tailored for growth. See our portfolio and start your project now!",
 };
 
 const FaqPage = () => {
-  return (
-    <FaqMain/>
-  );
+  return <FaqMain />;
 };
 
 export default FaqPage;

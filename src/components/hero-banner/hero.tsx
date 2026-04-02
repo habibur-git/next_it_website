@@ -172,11 +172,11 @@ const Hero = () => {
 
       {/* Content (above canvas) */}
       <div className="nt-relative nt-z-10 nt-flex nt-flex-col nt-items-center nt-mt-28 nt-max-w-8xl nt-mx-auto">
-        {/* Open to Work badge */}
+        {/* Accepting New Projects badge */}
         <div className="nt-inline-flex nt-items-center nt-gap-2 nt-rounded-full nt-px-4 nt-py-2 nt-mb-5 nt-bg-green-500/15 nt-border nt-border-green-500/30">
           <span className="nt-w-2 nt-h-2 nt-rounded-full nt-bg-green-500 nt-shrink-0" />
           <span className="nt-text-small nt-font-medium nt-text-green-400">
-            Open to Work
+            Accepting New Projects
           </span>
         </div>
 
@@ -203,12 +203,12 @@ const Hero = () => {
         {/* CTAs */}
         <div className="nt-flex nt-flex-wrap nt-items-center nt-justify-center nt-gap-4 nt-mt-8">
           <Button
-            label="Book A Call"
+            label="Book Free Consultation"
             href="/contact"
             variant="primary"
             showArrow
           />
-          <Button label="View Projects" href="/portfolio" variant="secondary" />
+          <Button label="View Case Studies" href="/portfolio" variant="secondary" />
         </div>
       </div>
       <div className="nt-container nt-mt-28">

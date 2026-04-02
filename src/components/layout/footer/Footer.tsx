@@ -33,13 +33,7 @@ export default function Footer() {
           <Socials />
           <div className="nt-flex nt-justify-between nt-flex-wrap nt-gap-6 nt-mt-12 nt-py-6">
             <p className="nt-text-white nt-text-base">
-              Copyright © {new Date().getFullYear()}
-              <Link
-                href="https://devionex.com"
-                className="nt-ml-1 nt-font-semibold nt-text-theme"
-              >
-                nextit.agency
-              </Link>
+              Copyright © 2026 nextit.agency
             </p>
             <p className="nt-text-white nt-text-base">
               Download Company Profile

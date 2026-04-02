@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
 import Faq from "@/components/faq/Faq";
-import PricingArea from "@/components/pricing/pricing-area";
 import FooterTwo from "@/components/layout/footer/Footer";
+import PricingArea from "@/components/pricing/pricing-area";
 import Wrapper from "@/layouts/wrapper";
 // animation
 import Header from "@/components/layout/header/Header";
@@ -47,7 +47,7 @@ const PricingMain = () => {
                   <div className="row">
                     <div className="col-xl-12">
                       <div className="tm-hero-content">
-                        <span className="tm-hero-subtitle">Liko Studio</span>
+                        <span className="tm-hero-subtitle">Next IT</span>
                         <h4 className="tm-hero-title tp-char-animation">
                           Pricing Plans
                         </h4>

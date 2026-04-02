@@ -18,7 +18,15 @@ interface SubmenuProps {
 }
 
 const serviceSections = [
-  { title: "Services", items: [{ slug: "social-media", title: "Social Media Design" }, { slug: "website", title: "Website Development" }, { slug: "ecommerce", title: "E-Commerce" }, { slug: "branding", title: "Branding" }] },
+  {
+    title: "Services",
+    items: [
+      { slug: "social-media", title: "Social Media Design" },
+      { slug: "website", title: "Website Development" },
+      { slug: "ecommerce", title: "E-Commerce" },
+      { slug: "branding", title: "Branding" },
+    ],
+  },
 ];
 
 export default function Submenu({ isOpen }: SubmenuProps) {
@@ -27,7 +35,7 @@ export default function Submenu({ isOpen }: SubmenuProps) {
   const data = serviceSections;
 
   // Service categories matching Services.tsx structure with proper links
-  const email = "contact@devionex.com";
+  const email = "info@nextit.agency";
 
   return (
     <div className="nt-fixed nt-top-[75px] nt-inset-x-0 nt-mx-auto nt-bg-bg/50 nt-backdrop-blur-lg nt-rounded-4xl nt-shadow-2xl nt-z-50 nt-p-2 nt-w-[70vw]">
@@ -113,8 +121,8 @@ export default function Submenu({ isOpen }: SubmenuProps) {
             </div>
             <div className="nt-p-5 nt-py-2">
               <p className="nt-text-desc nt-text-base">
-                <b className="nt-text-h6 nt-text-title">Schedule a call</b> & Let’s
-                connect and see how we can bring your vision to life.
+                <b className="nt-text-h6 nt-text-title">Schedule a call</b> &
+                Let’s connect and see how we can bring your vision to life.
               </p>
               <Button
                 label="Schedule a Meeting"
@@ -127,14 +135,16 @@ export default function Submenu({ isOpen }: SubmenuProps) {
 
           <button className="nt-flex nt-items-center nt-justify-between nt-gap-3 nt-bg-white nt-p-4 nt-rounded-2xl nt-mt-4 nt-cursor-pointer">
             <div className="nt-flex nt-flex-col nt-gap-2">
-              <span className="nt-text-sm nt-text-left">Do you prefer email?</span>
-              <Link href="mailto:contact@devionex.com">
+              <span className="nt-text-sm nt-text-left">
+                Do you prefer email?
+              </span>
+              <Link href="mailto:info@nextit.agency">
                 <h6 className="nt-text-title nt-mb-0">{email}</h6>
               </Link>
             </div>
 
             <Link
-              href="mailto:contact@devionex.com"
+              href="mailto:info@nextit.agency"
               className="nt-w-12 nt-h-12 nt-bg-bg nt-rounded-full nt-flex nt-items-center nt-justify-center nt-text-xl nt-text-theme"
             >
               <GrSend />
