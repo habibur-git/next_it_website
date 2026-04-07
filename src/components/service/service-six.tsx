@@ -114,7 +114,7 @@ export default function ServiceSix({ services = [] }: ServiceProps) {
                       <div className="sv-service-btn">
                         <Button
                           label="See Details"
-                          href={`/service-details/${item?._id}`}
+                          href={`/service-details/${item?.slug}`}
                           variant="primary"
                           showArrow
                         />

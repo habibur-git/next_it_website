@@ -16,7 +16,7 @@ export default function BlogItem({ item }: { item: IBlog }) {
         <span>{item.categories.join(" / ",) || ""}</span>
         {/* <span>Branding / Creative</span> */}
         <h4 className="tp-blog-title-sm">
-          <Link href={`/blog-details/${item._id}`}>{item.title}</Link>
+          <Link href={`/blog-details/${item.slug}`}>{item.title}</Link>
         </h4>
       </div>
     </div>

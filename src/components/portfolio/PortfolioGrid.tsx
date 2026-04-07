@@ -215,7 +215,7 @@ export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
               whileHover="hover"
             >
               <Link
-                href={`/portfolio/portfolio-details/${item._id}`}
+                href={`/portfolio/portfolio-details/${item.slug}`}
                 className="nt-block nt-w-full nt-h-full nt-relative"
               >
                 <motion.div

@@ -6,24 +6,21 @@ import { gsap } from "gsap";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import ServiceDetailsArea from "@/components/service/service-details-area";
+import PortfolioDetailsThreeArea from "@/components/portfolio/details/portfolio-details-3-area";
 import FooterTwo from "@/components/layout/footer/Footer";
-import HeaderThree from "@/layouts/headers/header-three";
 import Wrapper from "@/layouts/wrapper";
 // animation
-import Faq from "@/components/faq/Faq";
-import { charAnimation, titleAnimation } from "@/utils/title-animation";
-import EditorPreview from "@/components/blog/editor-preview";
-import useSWR from "swr";
-import { notFound } from "next/navigation";
 import Header from "@/components/layout/header/Header";
+import { charAnimation, titleAnimation } from "@/utils/title-animation";
+import useSWR from "swr";
+import EditorPreview from "@/components/blog/editor-preview";
 
-interface ServiceDetailsProps {
-    id: string;
+interface PortfolioDetailsProps {
+    slug: string;
 }
 
-export default function ServiceDetails({ id }: ServiceDetailsProps) {
-    const { data: service, isLoading } = useSWR(`/api/services/${id}`, {
+export default function PortfolioDetails({ slug }: PortfolioDetailsProps) {
+    const { data: portfolio, isLoading } = useSWR(`/api/portfolio/${slug}`, {
         fallbackData: {},
     });
 
@@ -35,15 +32,13 @@ export default function ServiceDetails({ id }: ServiceDetailsProps) {
             titleAnimation();
         }, 100);
         return () => clearTimeout(timer);
-    }, [service]);
+    }, [portfolio]);
 
-    if (isLoading) {
+    if(isLoading) {
         return "loading..."
-    } else if (!isLoading && Object.values(service).length === 0) {
-        return notFound();
     }
 
-    const { content = "" } = service || {}
+    const {bannerImage, content} = portfolio ||{}
 
     return (
         <Wrapper>
@@ -54,11 +49,10 @@ export default function ServiceDetails({ id }: ServiceDetailsProps) {
             <div id="smooth-wrapper">
                 <div id="smooth-content">
                     <main>
-                        {/* service details area */}
-                        {/* <ServiceDetailsArea /> */}
-                        {/* service details area */}
-                        <EditorPreview className="pt-10" data={content} />
-                        <Faq />
+                        <EditorPreview className="pt-12" data={content} />
+                        {/* portfolio details area */}
+                        {/* <PortfolioDetailsThreeArea /> */}
+                        {/* portfolio details area */}
                     </main>
 
                     {/* footer area */}
