@@ -6,21 +6,45 @@ import Marquee from "react-fast-marquee";
 const brandList = [...brandLogos, ...brandLogos];
 
 export default function BrandSlider() {
+  const renderLogoItems = () =>
+    brandList.map((b, i) => (
+      <div key={i} style={{ height: "auto", width: "320px" }}>
+        <Image
+          src={b.image}
+          alt={b.alt}
+          width={200}
+          height={80}
+          className="nt-object-contain"
+        />
+      </div>
+    ));
+
   return (
     <div className="tp-brand-slider-active fix">
-      <Marquee speed={100} loop={0} className="brand-wrapper">
-        {brandList.map((b, i) => (
-          <div key={i} style={{ height: "auto", width: "320px" }}>
-            <Image
-              src={b.image}
-              alt={b.alt}
-              width={200}
-              height={80}
-              className="nt-object-contain"
-            />
-          </div>
-        ))}
-      </Marquee>
+      <div className="brand-slider-row nt-mb-6">
+        <Marquee
+          speed={60}
+          loop={0}
+          gradient={false}
+          pauseOnHover={true}
+          className="brand-wrapper"
+        >
+          {renderLogoItems()}
+        </Marquee>
+      </div>
+
+      <div className="brand-slider-row">
+        <Marquee
+          speed={60}
+          direction="right"
+          loop={0}
+          gradient={false}
+          pauseOnHover={true}
+          className="brand-wrapper"
+        >
+          {renderLogoItems()}
+        </Marquee>
+      </div>
     </div>
   );
 }
