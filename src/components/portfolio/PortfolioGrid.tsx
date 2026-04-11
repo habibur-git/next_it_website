@@ -96,12 +96,12 @@ export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
   const filteredProjects =
     activeFilter === "ALL"
       ? portfolio
-      : portfolio.filter((item) => item.category === activeFilter);
+      : portfolio.filter((item) => item.category.toLowerCase() === activeFilter);
 
   // get unique categories
   const portfolioCategories = [
     "ALL",
-    ...Array.from(new Set(portfolio.map((item) => item.category))),
+    ...Array.from(new Set(portfolio.map((item) => item.category.toLowerCase()))),
   ];
 
   useEffect(() => {
@@ -133,6 +133,22 @@ export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
     return "loading...";
   }
 
+  function getDetailsLink(item: IPortfolio): string {
+    if (item?.enableViewUrl && item?.liveViewUrl) {
+      return item.liveViewUrl;
+    }
+
+    if (item?.content === "" || item?.content === '{"root":{"props":{}},"content":[],"zones":{}}') {
+      return "/portfolio";
+    }
+
+    if (item?.slug) {
+      return `/portfolio/portfolio-details/${item.slug}`;
+    }
+
+    return `/portfolio`;
+  }
+
   return (
     <div
       ref={sectionRef}
@@ -141,9 +157,8 @@ export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
       <div className="nt-container">
         {/* Header */}
         <div
-          className={`nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-relative ${
-            isVariantTwo ? "nt-mb-0" : "nt-mb-16"
-          }`}
+          className={`nt-grid nt-grid-cols-1 lg:nt-grid-cols-12 nt-gap-10 nt-items-end nt-w-full nt-relative ${isVariantTwo ? "nt-mb-0" : "nt-mb-16"
+            }`}
         >
           {!isVariantTwo && (
             <div className="nt-col-span-5">
@@ -162,11 +177,10 @@ export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
                     <button
                       key={cat}
                       onClick={() => setActiveFilter(cat)}
-                      className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-whitespace-nowrap ${
-                        isActive
-                          ? "nt-bg-white nt-text-body nt-shadow-sm"
-                          : "nt-text-white/70 hover:nt-text-white"
-                      }`}
+                      className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-whitespace-nowrap ${isActive
+                        ? "nt-bg-white nt-text-body nt-shadow-sm"
+                        : "nt-text-white/70 hover:nt-text-white"
+                        }`}
                     >
                       {cat}
                     </button>
@@ -190,11 +204,10 @@ export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
                   <button
                     key={cat}
                     onClick={() => setActiveFilter(cat)}
-                    className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-whitespace-nowrap ${
-                      isActive
-                        ? "nt-bg-white nt-text-body nt-shadow-sm"
-                        : "nt-text-white/70 hover:nt-text-white"
-                    }`}
+                    className={`nt-px-5 nt-py-2.5 nt-rounded-lg nt-text-small nt-font-medium nt-transition-all nt-whitespace-nowrap nt-capitalize ${isActive
+                      ? "nt-bg-white nt-text-body nt-shadow-sm"
+                      : "nt-text-white/70 hover:nt-text-white"
+                      }`}
                   >
                     {cat}
                   </button>
@@ -215,7 +228,7 @@ export default function PortfolioGrid({ variant = "one" }: PortfolioGridProps) {
               whileHover="hover"
             >
               <Link
-                href={`/portfolio/portfolio-details/${item.slug}`}
+                href={getDetailsLink(item)}
                 className="nt-block nt-w-full nt-h-full nt-relative"
               >
                 <motion.div

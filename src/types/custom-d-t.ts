@@ -46,6 +46,8 @@ export interface IPortfolio {
   services: string[];
   content: string;
   isFeatured: boolean;
+  liveViewUrl: string;
+  enableViewUrl: boolean;
   createdAt: string;
   updatedAt: string;
 }
